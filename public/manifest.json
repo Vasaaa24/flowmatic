@@ -1,0 +1,16 @@
+{
+  "name": "Flowmatic - Rezervacni system",
+  "short_name": "Flowmatic",
+  "description": "Inteligentni rezervacni system na miru vasemu salonu",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#121212",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
