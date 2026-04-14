@@ -1,4 +1,4 @@
-const CACHE_NAME = 'flowmatic-v1'
+const CACHE_NAME = 'valton-v1'
 
 self.addEventListener('install', (event) => {
   event.waitUntil(

@@ -26,7 +26,7 @@ function DashboardMockup({ isInView }) {
               <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
               <div className="w-3 h-3 rounded-full bg-green-500/60" />
             </div>
-            <div className="flex-1 text-center text-xs text-white/30">admin.flowmatic.cz</div>
+            <div className="flex-1 text-center text-xs text-white/30">admin.valton.cz</div>
           </div>
 
           {/* Dashboard content */}

@@ -18,7 +18,7 @@ export default function Problem() {
             <span className="text-gold">ne administrative.</span>
           </h2>
           <p className="text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
-            Vyrizovani telefonatu a zprav vas obira o cas. Flowmatic je vase recepcni, ktera nikdy
+            Vyrizovani telefonatu a zprav vas obira o cas. Valton je vase recepcni, ktera nikdy
             nespi, nedela chyby a vzdy vypada skvele &mdash; ve vasem vlastnim brandu.
           </p>
         </div>
