@@ -97,9 +97,9 @@ export default function ClientExperience() {
           }`}
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            Zazitek pro vase <span className="text-gold">klienty.</span>
+            Zážitek pro vaše <span className="text-gold">klienty.</span>
           </h2>
-          <p className="text-white/50 text-lg">Jednoduchy, rychly, elegantni.</p>
+          <p className="text-white/50 text-lg">Jednoduchý, rychlý, elegantní.</p>
         </div>
 
         {/* 3 iPhones */}
@@ -108,12 +108,12 @@ export default function ClientExperience() {
           <PhoneMockup delay={100} isInView={isInView}>
             <div className="text-center mb-4">
               <div className="text-xs text-gold font-semibold uppercase tracking-wider mb-1">Krok 1</div>
-              <div className="text-base font-semibold">Vyber sluzbu</div>
+              <div className="text-base font-semibold">Vyber službu</div>
             </div>
-            <ServiceItem icon="✂️" name="Strih" duration="30 min" price="450 Kc" selected />
-            <ServiceItem icon="🧔" name="Brada" duration="20 min" price="300 Kc" selected={false} />
-            <ServiceItem icon="💈" name="Strih + Brada" duration="45 min" price="650 Kc" selected={false} />
-            <ServiceItem icon="🧖" name="Royal balicek" duration="60 min" price="900 Kc" selected={false} />
+            <ServiceItem icon="✂️" name="Střih" duration="30 min" price="450 Kč" selected />
+            <ServiceItem icon="🧔" name="Brada" duration="20 min" price="300 Kč" selected={false} />
+            <ServiceItem icon="💈" name="Střih + Brada" duration="45 min" price="650 Kč" selected={false} />
+            <ServiceItem icon="🧖" name="Royal balíček" duration="60 min" price="900 Kč" selected={false} />
           </PhoneMockup>
 
           {/* Phone 2 - Barber Selection */}
@@ -125,7 +125,7 @@ export default function ClientExperience() {
             <div className="grid grid-cols-2 gap-3 mt-2">
               <BarberItem name="Martin" rating={5} selected />
               <BarberItem name="Jakub" rating={4} selected={false} />
-              <BarberItem name="Tomas" rating={5} selected={false} />
+              <BarberItem name="Tomáš" rating={5} selected={false} />
               <BarberItem name="Pavel" rating={4} selected={false} />
             </div>
           </PhoneMockup>
@@ -134,9 +134,9 @@ export default function ClientExperience() {
           <PhoneMockup delay={500} isInView={isInView}>
             <div className="text-center mb-4">
               <div className="text-xs text-gold font-semibold uppercase tracking-wider mb-1">Krok 3</div>
-              <div className="text-base font-semibold">Vyber termin</div>
+              <div className="text-base font-semibold">Vyber termín</div>
             </div>
-            <div className="text-sm text-white/40 text-center mb-3">Streda, 16. dubna</div>
+            <div className="text-sm text-white/40 text-center mb-3">Středa, 16. dubna</div>
             <div className="grid grid-cols-3 gap-2">
               <TimeSlot time="9:00" />
               <TimeSlot time="9:30" />
@@ -161,7 +161,7 @@ export default function ClientExperience() {
             isInView ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          Rezervace na <span className="text-gold font-semibold">3 kliknuti</span>, 24 hodin denne.
+          Rezervace na <span className="text-gold font-semibold">3 kliknutí</span>, 24 hodin denně.
         </p>
       </div>
     </section>

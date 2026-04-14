@@ -11,10 +11,10 @@ export default function Navbar() {
   }, [])
 
   const links = [
-    { href: '#problem', label: 'O nas' },
+    { href: '#problem', label: 'O nás' },
     { href: '#client', label: 'Pro klienty' },
-    { href: '#admin', label: 'Pro vas' },
-    { href: '#value', label: 'Vyhody' },
+    { href: '#admin', label: 'Pro vás' },
+    { href: '#value', label: 'Výhody' },
     { href: '#pricing', label: 'Cena' },
   ]
 
@@ -44,7 +44,7 @@ export default function Navbar() {
             href="#pricing"
             className="bg-gold text-dark font-semibold text-sm px-5 py-2 rounded-full hover:bg-gold-light transition-colors duration-200"
           >
-            Ziskat demo
+            Získat demo
           </a>
         </div>
 
@@ -83,7 +83,7 @@ export default function Navbar() {
               className="bg-gold text-dark font-semibold text-center px-5 py-2.5 rounded-full"
               onClick={() => setMenuOpen(false)}
             >
-              Ziskat demo
+              Získat demo
             </a>
           </div>
         </div>

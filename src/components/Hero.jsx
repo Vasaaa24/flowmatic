@@ -14,20 +14,20 @@ export default function Hero() {
         {/* Badge */}
         <div className="inline-flex items-center gap-2 bg-gold/10 border border-gold/20 rounded-full px-4 py-1.5 mb-8">
           <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
-          <span className="text-gold text-sm font-medium">Rezervacni system nove generace</span>
+          <span className="text-gold text-sm font-medium">Rezervační systém nové generace</span>
         </div>
 
         <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight mb-6 tracking-tight">
-          Automatizujte sve{' '}
+          Automatizujte své{' '}
           <span className="text-gold">rezervace.</span>
           <br />
-          Zvyste sve{' '}
+          Zvyšte své{' '}
           <span className="text-gold">zisky.</span>
         </h1>
 
         <p className="text-lg sm:text-xl text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed">
-          Inteligentni rezervacni system na miru vasemu salonu.
-          Profesionalni, automaticky a ve vasem brandu.
+          Inteligentní rezervační systém na míru vašemu salonu.
+          Profesionální, automatický a ve vašem brandu.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -35,7 +35,7 @@ export default function Hero() {
             href="#client"
             className="group inline-flex items-center justify-center gap-2 bg-gold text-dark font-bold text-lg px-8 py-4 rounded-full hover:bg-gold-light transition-all duration-300 hover:scale-105 shadow-lg shadow-gold/20"
           >
-            Chci videt, jak to funguje
+            Chci vidět, jak to funguje
             <svg
               className="w-5 h-5 transition-transform group-hover:translate-y-0.5"
               fill="none"
@@ -52,8 +52,8 @@ export default function Hero() {
         <div className="mt-16 grid grid-cols-3 gap-8 max-w-lg mx-auto">
           {[
             { value: '24/7', label: 'Dostupnost' },
-            { value: '3x', label: 'Kliknuti' },
-            { value: '48h', label: 'Nasazeni' },
+            { value: '3x', label: 'Kliknutí' },
+            { value: '48h', label: 'Nasazení' },
           ].map((stat) => (
             <div key={stat.label}>
               <div className="text-2xl sm:text-3xl font-bold text-gold">{stat.value}</div>

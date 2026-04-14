@@ -4,14 +4,14 @@ export default function Pricing() {
   const [ref, isInView] = useInView()
 
   const included = [
-    'Rezervacni system na miru',
-    'Vlastni brand a barvy',
-    'Admin panel s dashboard',
+    'Rezervační systém na míru',
+    'Vlastní brand a barvy',
+    'Admin panel s dashboardem',
     'Statistiky a reporty',
-    'SMS/email pripominky',
-    'Neomezeny pocet rezervaci',
-    'Technicka podpora',
-    'Nastaveni a konfigurace',
+    'SMS/email připomínky',
+    'Neomezený počet rezervací',
+    'Technická podpora',
+    'Nastavení a konfigurace',
   ]
 
   return (
@@ -23,11 +23,11 @@ export default function Pricing() {
           }`}
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            Pruhledna cena
+            Průhledná cena
             <br />
-            <span className="text-gold">bez zavazku.</span>
+            <span className="text-gold">bez závazků.</span>
           </h2>
-          <p className="text-white/50 text-lg">Zadne skryte poplatky. Zrusit muzete kdykoliv.</p>
+          <p className="text-white/50 text-lg">Žádné skryté poplatky. Zrušit můžete kdykoliv.</p>
         </div>
 
         {/* Pricing card */}
@@ -39,15 +39,15 @@ export default function Pricing() {
         >
           {/* Badge */}
           <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-dark text-sm font-bold px-5 py-1.5 rounded-full">
-            Zavadeci nabidka
+            Zaváděcí nabídka
           </div>
 
           <div className="text-center mb-8 pt-2">
             <div className="flex items-baseline justify-center gap-2">
               <span className="text-5xl sm:text-6xl font-bold text-gold">1 000</span>
-              <span className="text-xl text-white/50">Kc / mesic</span>
+              <span className="text-xl text-white/50">Kč / měsíc</span>
             </div>
-            <p className="text-white/40 text-sm mt-2">vcetne nastaveni a konfigurace</p>
+            <p className="text-white/40 text-sm mt-2">včetně nastavení a konfigurace</p>
           </div>
 
           {/* Features list */}
@@ -65,17 +65,17 @@ export default function Pricing() {
           {/* CTA */}
           <div className="text-center">
             <a
-              href="https://wa.me/420776282628?text=Mam%20zajem%20o%20demo%20Valton"
+              href="https://wa.me/420776282628?text=Mám%20zájem%20o%20demo%20Valton"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-gold text-dark font-bold text-lg px-10 py-4 rounded-full hover:bg-gold-light transition-all duration-300 hover:scale-105 shadow-lg shadow-gold/20"
             >
-              Ziskat demo zdarma
+              Získat demo zdarma
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
             </a>
-            <p className="text-white/30 text-xs mt-4">Bez zavazku. Odpovime do 24 hodin.</p>
+            <p className="text-white/30 text-xs mt-4">Bez závazků. Odpovíme do 24 hodin.</p>
           </div>
         </div>
       </div>

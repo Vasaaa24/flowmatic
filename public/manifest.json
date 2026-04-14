@@ -1,7 +1,7 @@
 {
-  "name": "Valton - Rezervacni system",
+  "name": "Valton - Rezervační systém",
   "short_name": "Valton",
-  "description": "Inteligentni rezervacni system na miru vasemu salonu - Valton",
+  "description": "Inteligentní rezervační systém na míru vašemu salonu - Valton",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#121212",
