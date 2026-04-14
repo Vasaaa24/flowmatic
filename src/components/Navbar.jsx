@@ -26,7 +26,7 @@ export default function Navbar() {
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#hero" className="text-2xl font-bold tracking-tight">
-          <span className="text-gold">Flow</span>matic
+          <span className="text-gold">VAL</span>TON
         </a>
 
         {/* Desktop links */}

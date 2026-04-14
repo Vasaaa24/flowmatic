@@ -65,7 +65,7 @@ export default function Pricing() {
           {/* CTA */}
           <div className="text-center">
             <a
-              href="https://wa.me/420776282628?text=Mam%20zajem%20o%20demo%20Flowmatic"
+              href="https://wa.me/420776282628?text=Mam%20zajem%20o%20demo%20Valton"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-gold text-dark font-bold text-lg px-10 py-4 rounded-full hover:bg-gold-light transition-all duration-300 hover:scale-105 shadow-lg shadow-gold/20"

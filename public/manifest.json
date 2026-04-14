@@ -1,7 +1,7 @@
 {
-  "name": "Flowmatic - Rezervacni system",
-  "short_name": "Flowmatic",
-  "description": "Inteligentni rezervacni system na miru vasemu salonu",
+  "name": "Valton - Rezervacni system",
+  "short_name": "Valton",
+  "description": "Inteligentni rezervacni system na miru vasemu salonu - Valton",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#121212",
