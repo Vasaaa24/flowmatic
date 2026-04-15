@@ -3,6 +3,7 @@ import Hero from './components/Hero'
 import Problem from './components/Problem'
 import ClientExperience from './components/ClientExperience'
 import Admin from './components/Admin'
+import AppPreview from './components/AppPreview'
 import ValueProposition from './components/ValueProposition'
 import Pricing from './components/Pricing'
 import Footer from './components/Footer'
@@ -15,6 +16,7 @@ export default function App() {
       <Problem />
       <ClientExperience />
       <Admin />
+      <AppPreview />
       <ValueProposition />
       <Pricing />
       <Footer />
