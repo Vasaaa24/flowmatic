@@ -1,0 +1,5 @@
+{
+  "env": {
+    "OTEL_RESOURCE_ATTRIBUTES": "repository.url=github.com/Vasaaa24/flowmatic"
+  }
+}
