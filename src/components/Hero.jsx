@@ -2,7 +2,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
     >
       {/* Background gradient effects */}
       <div className="absolute inset-0 overflow-hidden">
@@ -26,8 +26,8 @@ export default function Hero() {
         </h1>
 
         <p className="text-lg sm:text-xl text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed">
-          Inteligentní rezervační systém na míru vašemu salonu.
-          Profesionální, automatický a ve vašem brandu.
+          Rezervační systém pro jakýkoliv byznys — kadeřnictví, klinika, studio, posilovna a další.
+          Nastavíme ho přesně pro vaše odvětví a přidáme funkce podle vašich požadavků.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -53,7 +53,7 @@ export default function Hero() {
           {[
             { value: '24/7', label: 'Dostupnost' },
             { value: '3x', label: 'Kliknutí' },
-            { value: '48h', label: 'Nasazení' },
+            { value: '1 týden', label: 'Nasazení' },
           ].map((stat) => (
             <div key={stat.label}>
               <div className="text-2xl sm:text-3xl font-bold text-gold">{stat.value}</div>
@@ -63,12 +63,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <svg className="w-6 h-6 text-white/30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeWidth={2} d="M19 14l-7 7m0 0l-7-7" />
-        </svg>
-      </div>
     </section>
   )
 }

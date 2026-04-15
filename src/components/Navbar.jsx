@@ -14,6 +14,7 @@ export default function Navbar() {
     { href: '#problem', label: 'O nás' },
     { href: '#client', label: 'Pro klienty' },
     { href: '#admin', label: 'Pro vás' },
+    { href: '#preview', label: 'Ukázka' },
     { href: '#value', label: 'Výhody' },
     { href: '#pricing', label: 'Cena' },
   ]

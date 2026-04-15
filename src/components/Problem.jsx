@@ -13,13 +13,13 @@ export default function Problem() {
       >
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-            Věnujte se řemeslu,
+            Věnujte se byznysu,
             <br />
             <span className="text-gold">ne administrativě.</span>
           </h2>
           <p className="text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
-            Vyřizování telefonátů a zpráv vás obírá o čas. Valton je vaše recepční, která nikdy
-            nespí, nedělá chyby a vždy vypadá skvěle &mdash; ve vašem vlastním brandu.
+            Vyřizování telefonátů a zpráv vás obírá o čas. Valton funguje pro jakýkoliv obor &mdash;
+            nastavíme ho přesně pro váš byznys a přidáme libovolné funkce podle vašich požadavků.
           </p>
         </div>
 

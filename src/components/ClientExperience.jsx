@@ -99,7 +99,7 @@ export default function ClientExperience() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
             Zážitek pro vaše <span className="text-gold">klienty.</span>
           </h2>
-          <p className="text-white/50 text-lg">Jednoduchý, rychlý, elegantní.</p>
+          <p className="text-white/50 text-lg">Jednoduchý, rychlý, elegantní — přizpůsobený vašemu oboru.</p>
         </div>
 
         {/* 3 iPhones */}
@@ -116,11 +116,11 @@ export default function ClientExperience() {
             <ServiceItem icon="🧖" name="Royal balíček" duration="60 min" price="900 Kč" selected={false} />
           </PhoneMockup>
 
-          {/* Phone 2 - Barber Selection */}
+          {/* Phone 2 - Staff Selection */}
           <PhoneMockup delay={300} isInView={isInView}>
             <div className="text-center mb-4">
               <div className="text-xs text-gold font-semibold uppercase tracking-wider mb-1">Krok 2</div>
-              <div className="text-base font-semibold">Vyber barbera</div>
+              <div className="text-base font-semibold">Vyber specialistu</div>
             </div>
             <div className="grid grid-cols-2 gap-3 mt-2">
               <BarberItem name="Martin" rating={5} selected />
@@ -161,7 +161,7 @@ export default function ClientExperience() {
             isInView ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          Rezervace na <span className="text-gold font-semibold">3 kliknutí</span>, 24 hodin denně.
+          Rezervace na <span className="text-gold font-semibold">3 kliknutí</span>, 24 hodin denně — služby přizpůsobíme vašemu byznysu.
         </p>
       </div>
     </section>

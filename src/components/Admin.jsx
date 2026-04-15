@@ -154,7 +154,7 @@ export default function Admin() {
           }`}
           style={{ transitionDelay: '600ms' }}
         >
-          Kompletní správa salonu <span className="text-gold font-semibold">ve vaší kapse.</span>
+          Kompletní správa byznysu <span className="text-gold font-semibold">ve vaší kapse.</span>
         </p>
       </div>
     </section>
