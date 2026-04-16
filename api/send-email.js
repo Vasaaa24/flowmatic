@@ -16,7 +16,7 @@ export default async function handler(req, res) {
   try {
     await resend.emails.send({
       from: 'Valton <noreply@valton.cz>',
-      to: 'vasyl.halycka@mibcon.cz',
+      to: 'valton.reserv@gmail.com',
       replyTo: email,
       subject: `Nová poptávka od ${name}`,
       html: `
