@@ -6,6 +6,7 @@ import Admin from './components/Admin'
 import AppPreview from './components/AppPreview'
 import ValueProposition from './components/ValueProposition'
 import Pricing from './components/Pricing'
+import Contact from './components/Contact'
 import Footer from './components/Footer'
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
       <AppPreview />
       <ValueProposition />
       <Pricing />
+      <Contact />
       <Footer />
     </div>
   )

@@ -17,6 +17,7 @@ export default function Navbar() {
     { href: '#preview', label: 'Ukázka' },
     { href: '#value', label: 'Výhody' },
     { href: '#pricing', label: 'Cena' },
+    { href: '#contact', label: 'Kontakt' },
   ]
 
   return (
