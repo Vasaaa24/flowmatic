@@ -43,19 +43,19 @@ export default function Pricing() {
           </div>
 
           <div className="mb-8 pt-2">
-            <div className="grid grid-cols-2 divide-x divide-white/10 text-center">
-              <div className="pr-6">
+            <div className="flex flex-col sm:flex-row sm:divide-x divide-white/10 gap-6 sm:gap-0 text-center">
+              <div className="sm:pr-8 sm:flex-1">
                 <div className="text-xs text-gold font-semibold uppercase tracking-wider mb-2">1. měsíc</div>
                 <div className="flex items-baseline justify-center gap-1">
-                  <span className="text-4xl sm:text-5xl font-bold text-gold">999</span>
-                  <span className="text-base text-white/50">Kč</span>
+                  <span className="text-5xl font-bold text-gold">999</span>
+                  <span className="text-lg text-white/50">Kč</span>
                 </div>
               </div>
-              <div className="pl-6">
+              <div className="sm:pl-8 sm:flex-1">
                 <div className="text-xs text-white/40 font-semibold uppercase tracking-wider mb-2">Poté každý měsíc</div>
                 <div className="flex items-baseline justify-center gap-1">
-                  <span className="text-4xl sm:text-5xl font-bold text-white">1 900</span>
-                  <span className="text-base text-white/50">Kč</span>
+                  <span className="text-5xl font-bold text-white">1 900</span>
+                  <span className="text-lg text-white/50">Kč</span>
                 </div>
               </div>
             </div>
