@@ -59,7 +59,7 @@ export default function Pricing() {
                 </div>
               </div>
             </div>
-            <p className="text-white/40 text-sm mt-4 text-center">včetně nastavení a konfigurace</p>
+            <p className="text-white/40 text-sm mt-4 text-center">včetně nastavení, konfigurace a celodenní podpory</p>
           </div>
 
           {/* Features list */}
