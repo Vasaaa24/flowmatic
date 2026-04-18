@@ -44,8 +44,13 @@ export default function Pricing() {
 
           <div className="text-center mb-8 pt-2">
             <div className="flex items-baseline justify-center gap-2">
-              <span className="text-5xl sm:text-6xl font-bold text-gold">1 000</span>
-              <span className="text-xl text-white/50">Kč / měsíc</span>
+              <span className="text-5xl sm:text-6xl font-bold text-gold">999</span>
+              <span className="text-xl text-white/50">Kč / 1. měsíc</span>
+            </div>
+            <div className="flex items-center justify-center gap-2 mt-3">
+              <span className="text-white/30 text-sm line-through">1 900 Kč</span>
+              <span className="text-white/50 text-sm">→ poté</span>
+              <span className="text-white/70 text-sm font-semibold">1 900 Kč / měsíc</span>
             </div>
             <p className="text-white/40 text-sm mt-2">včetně nastavení a konfigurace</p>
           </div>
