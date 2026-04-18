@@ -42,17 +42,24 @@ export default function Pricing() {
             Zaváděcí nabídka
           </div>
 
-          <div className="text-center mb-8 pt-2">
-            <div className="flex items-baseline justify-center gap-2">
-              <span className="text-5xl sm:text-6xl font-bold text-gold">999</span>
-              <span className="text-xl text-white/50">Kč / 1. měsíc</span>
+          <div className="mb-8 pt-2">
+            <div className="grid grid-cols-2 divide-x divide-white/10 text-center">
+              <div className="pr-6">
+                <div className="text-xs text-gold font-semibold uppercase tracking-wider mb-2">1. měsíc</div>
+                <div className="flex items-baseline justify-center gap-1">
+                  <span className="text-4xl sm:text-5xl font-bold text-gold">999</span>
+                  <span className="text-base text-white/50">Kč</span>
+                </div>
+              </div>
+              <div className="pl-6">
+                <div className="text-xs text-white/40 font-semibold uppercase tracking-wider mb-2">Poté každý měsíc</div>
+                <div className="flex items-baseline justify-center gap-1">
+                  <span className="text-4xl sm:text-5xl font-bold text-white">1 900</span>
+                  <span className="text-base text-white/50">Kč</span>
+                </div>
+              </div>
             </div>
-            <div className="flex items-center justify-center gap-2 mt-3">
-              <span className="text-white/30 text-sm line-through">1 900 Kč</span>
-              <span className="text-white/50 text-sm">→ poté</span>
-              <span className="text-white/70 text-sm font-semibold">1 900 Kč / měsíc</span>
-            </div>
-            <p className="text-white/40 text-sm mt-2">včetně nastavení a konfigurace</p>
+            <p className="text-white/40 text-sm mt-4 text-center">včetně nastavení a konfigurace</p>
           </div>
 
           {/* Features list */}
