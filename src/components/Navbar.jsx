@@ -39,6 +39,7 @@ export default function Navbar() {
     { href: '#preview', label: t('nav', 'preview') },
     { href: '#value',   label: t('nav', 'value') },
     { href: '#pricing', label: t('nav', 'pricing') },
+    { href: '#reviews', label: t('nav', 'reviews') },
     { href: '#contact', label: t('nav', 'contact') },
   ]
 
