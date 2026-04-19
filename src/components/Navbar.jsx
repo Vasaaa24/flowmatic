@@ -10,8 +10,8 @@ function LangSwitch() {
       onChange={(e) => setLang(e.target.value)}
       className="bg-transparent border border-white/20 rounded-lg px-2 py-1 text-sm text-white/70 focus:outline-none focus:border-gold/50 cursor-pointer"
     >
-      <option value="cs" className="bg-dark">🇨🇿 CZ</option>
-      <option value="uk" className="bg-dark">🇺🇦 UA</option>
+      <option value="cs" className="bg-dark">Čeština</option>
+      <option value="uk" className="bg-dark">Українська</option>
     </select>
   )
 }
