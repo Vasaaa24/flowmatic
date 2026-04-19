@@ -49,14 +49,14 @@ export default function Hero() {
           </a>
         </div>
 
-        <div className="mt-16 grid grid-cols-3 gap-8 max-w-lg mx-auto">
+        <div className="mt-16 grid grid-cols-3 gap-4 sm:gap-8 max-w-xl mx-auto">
           {[
             { value: t('hero', 'stat1val'), label: t('hero', 'stat1') },
             { value: t('hero', 'stat2val'), label: t('hero', 'stat2') },
             { value: t('hero', 'stat3val'), label: t('hero', 'stat3') },
           ].map((stat) => (
             <div key={stat.label}>
-              <div className="text-2xl sm:text-3xl font-bold text-gold">{stat.value}</div>
+              <div className="text-xl sm:text-3xl font-bold text-gold whitespace-nowrap">{stat.value}</div>
               <div className="text-xs sm:text-sm text-white/50 mt-1">{stat.label}</div>
             </div>
           ))}
