@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { useInView } from '../hooks/useInView'
 import { useLanguage } from '../context/LanguageContext'
 
@@ -97,19 +97,39 @@ export default function Reviews() {
   const list = reviews[lang] ?? reviews.cs
   const [active, setActive] = useState(0)
   const [paused, setPaused] = useState(false)
+  const [direction, setDirection] = useState('right') // 'right' | 'left'
+  const [animKey, setAnimKey] = useState(0)
+  const touchStartX = useRef(null)
 
-  const next = useCallback(() => setActive((i) => (i + 1) % list.length), [list.length])
-  const prev = () => setActive((i) => (i - 1 + list.length) % list.length)
+  const goTo = useCallback((index, dir) => {
+    setDirection(dir)
+    setAnimKey((k) => k + 1)
+    setActive(index)
+  }, [])
 
-  useEffect(() => {
-    setActive(0)
-  }, [lang])
+  const next = useCallback(() => {
+    goTo((active + 1) % list.length, 'right')
+  }, [active, list.length, goTo])
+
+  const prev = useCallback(() => {
+    goTo((active - 1 + list.length) % list.length, 'left')
+  }, [active, list.length, goTo])
+
+  useEffect(() => { setActive(0) }, [lang])
 
   useEffect(() => {
     if (paused) return
     const id = setInterval(next, 4500)
     return () => clearInterval(id)
   }, [paused, next])
+
+  const handleTouchStart = (e) => { touchStartX.current = e.touches[0].clientX }
+  const handleTouchEnd = (e) => {
+    if (touchStartX.current === null) return
+    const diff = touchStartX.current - e.changedTouches[0].clientX
+    if (Math.abs(diff) > 40) diff > 0 ? next() : prev()
+    touchStartX.current = null
+  }
 
   const review = list[active]
 
@@ -127,16 +147,18 @@ export default function Reviews() {
 
         {/* Card */}
         <div
-          className="relative bg-dark-card border border-white/5 rounded-3xl p-8 sm:p-10 cursor-pointer"
+          className="relative bg-dark-card border border-white/5 rounded-3xl p-8 sm:p-10 overflow-hidden cursor-pointer"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
         >
           {/* Quote icon */}
           <svg className="w-10 h-10 text-gold/20 mb-6" fill="currentColor" viewBox="0 0 32 32">
             <path d="M10 8C6.686 8 4 10.686 4 14v10h10V14H7.5c0-1.38 1.12-2.5 2.5-2.5V8zm14 0c-3.314 0-6 2.686-6 6v10h10V14h-6.5c0-1.38 1.12-2.5 2.5-2.5V8z" />
           </svg>
 
-          <div key={active} className="animate-fade">
+          <div key={animKey} className={direction === 'right' ? 'animate-slide-right' : 'animate-slide-left'}>
             <Stars count={review.stars} />
             <p className="text-lg sm:text-xl text-white/80 leading-relaxed mt-4 mb-8">
               "{review.text}"
@@ -153,15 +175,11 @@ export default function Reviews() {
           </div>
 
           {/* Arrows */}
-          <button onClick={prev} className="absolute left-4 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-white/30 hover:text-gold transition-colors">
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path d="M15 19l-7-7 7-7" />
-            </svg>
+          <button onClick={prev} className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-white/20 hover:text-gold transition-colors">
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path d="M15 19l-7-7 7-7" /></svg>
           </button>
-          <button onClick={next} className="absolute right-4 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-white/30 hover:text-gold transition-colors">
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path d="M9 5l7 7-7 7" />
-            </svg>
+          <button onClick={next} className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-white/20 hover:text-gold transition-colors">
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path d="M9 5l7 7-7 7" /></svg>
           </button>
         </div>
 
