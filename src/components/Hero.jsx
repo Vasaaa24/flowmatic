@@ -51,9 +51,9 @@ export default function Hero() {
 
         <div className="mt-16 grid grid-cols-3 gap-8 max-w-lg mx-auto">
           {[
-            { value: '24/7', label: t('hero', 'stat1') },
-            { value: '3x',   label: t('hero', 'stat2') },
-            { value: '1 týden', label: t('hero', 'stat3') },
+            { value: t('hero', 'stat1val'), label: t('hero', 'stat1') },
+            { value: t('hero', 'stat2val'), label: t('hero', 'stat2') },
+            { value: t('hero', 'stat3val'), label: t('hero', 'stat3') },
           ].map((stat) => (
             <div key={stat.label}>
               <div className="text-2xl sm:text-3xl font-bold text-gold">{stat.value}</div>
