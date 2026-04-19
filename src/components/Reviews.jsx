@@ -145,41 +145,38 @@ export default function Reviews() {
           </h2>
         </div>
 
-        {/* Card */}
-        <div
-          className="relative bg-dark-card border border-white/5 rounded-3xl p-8 sm:p-10 overflow-hidden cursor-pointer"
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
-        >
-          {/* Quote icon */}
-          <svg className="w-10 h-10 text-gold/20 mb-6" fill="currentColor" viewBox="0 0 32 32">
-            <path d="M10 8C6.686 8 4 10.686 4 14v10h10V14H7.5c0-1.38 1.12-2.5 2.5-2.5V8zm14 0c-3.314 0-6 2.686-6 6v10h10V14h-6.5c0-1.38 1.12-2.5 2.5-2.5V8z" />
-          </svg>
+        {/* Arrows + Card row */}
+        <div className="flex items-center gap-2 sm:gap-4">
+          <button onClick={prev} className="shrink-0 w-9 h-9 flex items-center justify-center rounded-full border border-white/10 text-white/40 hover:text-gold hover:border-gold/40 transition-colors">
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path d="M15 19l-7-7 7-7" /></svg>
+          </button>
 
-          <div key={animKey} className={direction === 'right' ? 'animate-slide-right' : 'animate-slide-left'}>
-            <Stars count={review.stars} />
-            <p className="text-lg sm:text-xl text-white/80 leading-relaxed mt-4 mb-8">
-              "{review.text}"
-            </p>
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center text-gold font-bold text-sm shrink-0">
-                {review.avatar}
-              </div>
-              <div>
-                <div className="font-semibold text-white">{review.name}</div>
-                <div className="text-sm text-white/40">{review.business}</div>
+          <div
+            className="flex-1 bg-dark-card border border-white/5 rounded-2xl p-6 overflow-hidden"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
+            <div key={animKey} className={direction === 'right' ? 'animate-slide-right' : 'animate-slide-left'}>
+              <Stars count={review.stars} />
+              <p className="text-base sm:text-lg text-white/80 leading-relaxed mt-3 mb-5">
+                "{review.text}"
+              </p>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center text-gold font-bold text-xs shrink-0">
+                  {review.avatar}
+                </div>
+                <div>
+                  <div className="font-semibold text-sm text-white">{review.name}</div>
+                  <div className="text-xs text-white/40">{review.business}</div>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Arrows */}
-          <button onClick={prev} className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-white/20 hover:text-gold transition-colors">
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path d="M15 19l-7-7 7-7" /></svg>
-          </button>
-          <button onClick={next} className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center text-white/20 hover:text-gold transition-colors">
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path d="M9 5l7 7-7 7" /></svg>
+          <button onClick={next} className="shrink-0 w-9 h-9 flex items-center justify-center rounded-full border border-white/10 text-white/40 hover:text-gold hover:border-gold/40 transition-colors">
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path d="M9 5l7 7-7 7" /></svg>
           </button>
         </div>
 
