@@ -5,14 +5,19 @@ function LangSwitch() {
   const { lang, setLang } = useLanguage()
 
   return (
-    <select
-      value={lang}
-      onChange={(e) => setLang(e.target.value)}
-      className="bg-transparent border border-white/20 rounded-lg px-2 py-1 text-sm text-white/70 focus:outline-none focus:border-gold/50 cursor-pointer"
-    >
-      <option value="cs" className="bg-dark">Čeština</option>
-      <option value="uk" className="bg-dark">Українська</option>
-    </select>
+    <div className="relative">
+      <select
+        value={lang}
+        onChange={(e) => setLang(e.target.value)}
+        className="appearance-none bg-white/5 border border-white/15 rounded-xl pl-3 pr-8 py-2 text-sm text-white/80 focus:outline-none focus:border-gold/50 cursor-pointer w-full"
+      >
+        <option value="cs" className="bg-[#111]">Čeština</option>
+        <option value="uk" className="bg-[#111]">Українська</option>
+      </select>
+      <svg className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+        <path d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
   )
 }
 
