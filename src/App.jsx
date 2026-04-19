@@ -7,6 +7,7 @@ import Admin from './components/Admin'
 import AppPreview from './components/AppPreview'
 import ValueProposition from './components/ValueProposition'
 import Pricing from './components/Pricing'
+import Reviews from './components/Reviews'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
@@ -22,6 +23,7 @@ export default function App() {
         <AppPreview />
         <ValueProposition />
         <Pricing />
+        <Reviews />
         <Contact />
         <Footer />
       </div>
