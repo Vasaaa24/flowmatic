@@ -1,17 +1,13 @@
 import { useInView } from '../hooks/useInView'
+import { useLanguage } from '../context/LanguageContext'
 
 export default function Pricing() {
   const [ref, isInView] = useInView()
+  const { t } = useLanguage()
 
   const included = [
-    'Rezervační systém na míru',
-    'Vlastní brand a barvy',
-    'Admin panel s dashboardem',
-    'Statistiky a reporty',
-    'SMS/email připomínky',
-    'Neomezený počet rezervací',
-    'Technická podpora',
-    'Nastavení a konfigurace',
+    t('pricing', 'f1'), t('pricing', 'f2'), t('pricing', 'f3'), t('pricing', 'f4'),
+    t('pricing', 'f5'), t('pricing', 'f6'), t('pricing', 'f7'), t('pricing', 'f8'),
   ]
 
   return (
@@ -23,46 +19,43 @@ export default function Pricing() {
           }`}
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            Průhledná cena
+            {t('pricing', 'h1')}
             <br />
-            <span className="text-gold">bez závazků.</span>
+            <span className="text-gold">{t('pricing', 'h2')}</span>
           </h2>
-          <p className="text-white/50 text-lg">Žádné skryté poplatky. Zrušit můžete kdykoliv.</p>
+          <p className="text-white/50 text-lg">{t('pricing', 'p')}</p>
         </div>
 
-        {/* Pricing card */}
         <div
           className={`relative bg-dark-card border border-gold/20 rounded-3xl p-8 sm:p-10 transition-all duration-700 ${
             isInView ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-95'
           }`}
           style={{ transitionDelay: '200ms' }}
         >
-          {/* Badge */}
-          <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-dark text-sm font-bold px-5 py-1.5 rounded-full">
-            Zaváděcí nabídka
+          <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-dark text-sm font-bold px-5 py-1.5 rounded-full whitespace-nowrap">
+            {t('pricing', 'badge')}
           </div>
 
           <div className="mb-8 pt-2">
             <div className="flex flex-col sm:flex-row sm:divide-x divide-white/10 gap-6 sm:gap-0 text-center">
               <div className="sm:pr-8 sm:flex-1">
-                <div className="text-xs text-gold font-semibold uppercase tracking-wider mb-2">1. měsíc</div>
+                <div className="text-xs text-gold font-semibold uppercase tracking-wider mb-2">{t('pricing', 'month1')}</div>
                 <div className="flex items-baseline justify-center gap-1">
                   <span className="text-5xl font-bold text-gold">999</span>
                   <span className="text-lg text-white/50">Kč</span>
                 </div>
               </div>
               <div className="sm:pl-8 sm:flex-1">
-                <div className="text-xs text-white/40 font-semibold uppercase tracking-wider mb-2">Poté každý měsíc</div>
+                <div className="text-xs text-white/40 font-semibold uppercase tracking-wider mb-2">{t('pricing', 'monthReg')}</div>
                 <div className="flex items-baseline justify-center gap-1">
                   <span className="text-5xl font-bold text-white">1 900</span>
                   <span className="text-lg text-white/50">Kč</span>
                 </div>
               </div>
             </div>
-            <p className="text-white/40 text-sm mt-4 text-center">včetně nastavení, konfigurace a celodenní podpory</p>
+            <p className="text-white/40 text-sm mt-4 text-center">{t('pricing', 'note')}</p>
           </div>
 
-          {/* Features list */}
           <div className="grid sm:grid-cols-2 gap-3 mb-8">
             {included.map((feature, i) => (
               <div key={i} className="flex items-center gap-3">
@@ -74,7 +67,6 @@ export default function Pricing() {
             ))}
           </div>
 
-          {/* CTA */}
           <div className="text-center">
             <a
               href="https://wa.me/420776282628?text=Mám%20zájem%20o%20demo%20Valton"
@@ -82,12 +74,12 @@ export default function Pricing() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-gold text-dark font-bold text-lg px-10 py-4 rounded-full hover:bg-gold-light transition-all duration-300 hover:scale-105 shadow-lg shadow-gold/20"
             >
-              Získat demo zdarma
+              {t('pricing', 'cta')}
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
             </a>
-            <p className="text-white/30 text-xs mt-4">Bez závazků. Odpovíme do 24 hodin.</p>
+            <p className="text-white/30 text-xs mt-4">{t('pricing', 'ctaNote')}</p>
           </div>
         </div>
       </div>

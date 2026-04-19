@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
+import { useLanguage } from '../context/LanguageContext'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const { lang, setLang, t } = useLanguage()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
@@ -11,13 +13,13 @@ export default function Navbar() {
   }, [])
 
   const links = [
-    { href: '#problem', label: 'O nás' },
-    { href: '#client', label: 'Pro klienty' },
-    { href: '#admin', label: 'Pro vás' },
-    { href: '#preview', label: 'Ukázka' },
-    { href: '#value', label: 'Výhody' },
-    { href: '#pricing', label: 'Cena' },
-    { href: '#contact', label: 'Kontakt' },
+    { href: '#problem', label: t('nav', 'about') },
+    { href: '#client',  label: t('nav', 'clients') },
+    { href: '#admin',   label: t('nav', 'admin') },
+    { href: '#preview', label: t('nav', 'preview') },
+    { href: '#value',   label: t('nav', 'value') },
+    { href: '#pricing', label: t('nav', 'pricing') },
+    { href: '#contact', label: t('nav', 'contact') },
   ]
 
   return (
@@ -32,7 +34,7 @@ export default function Navbar() {
         </a>
 
         {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6">
           {links.map((link) => (
             <a
               key={link.href}
@@ -42,11 +44,21 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+
+          {/* Language switcher */}
+          <button
+            onClick={() => setLang(lang === 'cs' ? 'uk' : 'cs')}
+            className="flex items-center gap-1.5 text-sm text-white/50 hover:text-white transition-colors border border-white/10 rounded-full px-3 py-1 hover:border-white/30"
+            aria-label="Přepnout jazyk"
+          >
+            {lang === 'cs' ? '🇨🇿 CZ' : '🇺🇦 UA'}
+          </button>
+
           <a
-            href="#pricing"
+            href="#contact"
             className="bg-gold text-dark font-semibold text-sm px-5 py-2 rounded-full hover:bg-gold-light transition-colors duration-200"
           >
-            Získat demo
+            {t('nav', 'cta')}
           </a>
         </div>
 
@@ -80,12 +92,21 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
+
+            {/* Mobile language switcher */}
+            <button
+              onClick={() => { setLang(lang === 'cs' ? 'uk' : 'cs'); setMenuOpen(false) }}
+              className="flex items-center gap-2 text-white/50 hover:text-white transition-colors text-left"
+            >
+              {lang === 'cs' ? '🇺🇦 Українська' : '🇨🇿 Čeština'}
+            </button>
+
             <a
-              href="#pricing"
+              href="#contact"
               className="bg-gold text-dark font-semibold text-center px-5 py-2.5 rounded-full"
               onClick={() => setMenuOpen(false)}
             >
-              Získat demo
+              {t('nav', 'cta')}
             </a>
           </div>
         </div>

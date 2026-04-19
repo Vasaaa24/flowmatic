@@ -1,12 +1,15 @@
 import { useInView } from '../hooks/useInView'
+import { useLanguage } from '../context/LanguageContext'
 
 function DashboardMockup({ isInView }) {
+  const { t } = useLanguage()
+
   const appointments = [
-    { time: '9:00', name: 'Jan Novák', service: 'Střih', barber: 'Martin', color: 'bg-gold/20 border-gold/30' },
-    { time: '9:30', name: 'Petr Svoboda', service: 'Brada', barber: 'Jakub', color: 'bg-blue-500/20 border-blue-500/30' },
-    { time: '10:00', name: 'Lukáš Dvořák', service: 'Střih + Brada', barber: 'Martin', color: 'bg-gold/20 border-gold/30' },
-    { time: '10:30', name: 'Ondřej Černý', service: 'Royal balíček', barber: 'Tomáš', color: 'bg-purple-500/20 border-purple-500/30' },
-    { time: '11:00', name: 'Adam Horák', service: 'Střih', barber: 'Pavel', color: 'bg-green-500/20 border-green-500/30' },
+    { time: '9:00',  name: 'Jan Novák',    service: t('admin', 'sStrih'),     barber: 'Martin', color: 'bg-gold/20 border-gold/30' },
+    { time: '9:30',  name: 'Petr Svoboda', service: t('admin', 'sBrada'),     barber: 'Jakub',  color: 'bg-blue-500/20 border-blue-500/30' },
+    { time: '10:00', name: 'Lukáš Dvořák', service: t('admin', 'sStihBrada'), barber: 'Martin', color: 'bg-gold/20 border-gold/30' },
+    { time: '10:30', name: 'Ondřej Černý', service: t('admin', 'sRoyal'),     barber: 'Tomáš',  color: 'bg-purple-500/20 border-purple-500/30' },
+    { time: '11:00', name: 'Adam Horák',   service: t('admin', 'sStrih'),     barber: 'Pavel',  color: 'bg-green-500/20 border-green-500/30' },
   ]
 
   return (
@@ -16,10 +19,8 @@ function DashboardMockup({ isInView }) {
       }`}
       style={{ transitionDelay: '200ms' }}
     >
-      {/* Laptop frame */}
       <div className="relative max-w-3xl mx-auto">
         <div className="bg-dark-card border border-white/10 rounded-2xl overflow-hidden shadow-2xl shadow-black/50">
-          {/* Title bar */}
           <div className="flex items-center gap-2 px-4 py-3 bg-dark-lighter border-b border-white/5">
             <div className="flex gap-1.5">
               <div className="w-3 h-3 rounded-full bg-red-500/60" />
@@ -29,20 +30,17 @@ function DashboardMockup({ isInView }) {
             <div className="flex-1 text-center text-xs text-white/30">admin.valton.cz</div>
           </div>
 
-          {/* Dashboard content */}
           <div className="p-4 sm:p-6">
-            {/* Header */}
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h4 className="text-lg font-semibold">Dnešní agenda</h4>
-                <p className="text-sm text-white/40">Středa, 16. dubna 2026</p>
+                <h4 className="text-lg font-semibold">{t('admin', 'today')}</h4>
+                <p className="text-sm text-white/40">{t('admin', 'date')}</p>
               </div>
               <div className="bg-gold/10 text-gold text-sm font-medium px-3 py-1 rounded-full">
-                12 rezervací
+                {t('admin', 'reservations')}
               </div>
             </div>
 
-            {/* Appointments list */}
             <div className="space-y-2">
               {appointments.map((apt, i) => (
                 <div key={i} className={`flex items-center gap-4 p-3 rounded-xl border ${apt.color}`}>
@@ -63,6 +61,7 @@ function DashboardMockup({ isInView }) {
 }
 
 function StatsMockup({ isInView }) {
+  const { t } = useLanguage()
   const bars = [65, 80, 45, 90, 75, 60, 85]
   const days = ['Po', 'Út', 'St', 'Čt', 'Pá', 'So', 'Ne']
 
@@ -74,9 +73,8 @@ function StatsMockup({ isInView }) {
       style={{ transitionDelay: '400ms' }}
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto mt-6">
-        {/* Revenue card */}
         <div className="bg-dark-card border border-white/10 rounded-2xl p-5">
-          <div className="text-sm text-white/40 mb-1">Tržby tento týden</div>
+          <div className="text-sm text-white/40 mb-1">{t('admin', 'revenue')}</div>
           <div className="text-2xl font-bold text-gold mb-4">32 450 Kč</div>
           <div className="flex items-end gap-2" style={{ height: '96px' }}>
             {bars.map((h, i) => (
@@ -84,10 +82,7 @@ function StatsMockup({ isInView }) {
                 <div className="flex-1 w-full flex items-end">
                   <div
                     className="w-full bg-gold/40 rounded-t-md transition-all duration-1000"
-                    style={{
-                      height: isInView ? `${h}%` : '0%',
-                      transitionDelay: `${600 + i * 100}ms`,
-                    }}
+                    style={{ height: isInView ? `${h}%` : '0%', transitionDelay: `${600 + i * 100}ms` }}
                   />
                 </div>
                 <span className="text-[10px] text-white/30 mt-1">{days[i]}</span>
@@ -96,26 +91,22 @@ function StatsMockup({ isInView }) {
           </div>
         </div>
 
-        {/* Utilization card */}
         <div className="bg-dark-card border border-white/10 rounded-2xl p-5">
-          <div className="text-sm text-white/40 mb-1">Vytíženost</div>
+          <div className="text-sm text-white/40 mb-1">{t('admin', 'utilization')}</div>
           <div className="text-2xl font-bold text-gold mb-4">87%</div>
           <div className="space-y-3">
             {[
               { name: 'Martin', pct: 92 },
-              { name: 'Jakub', pct: 85 },
-              { name: 'Tomáš', pct: 88 },
-              { name: 'Pavel', pct: 78 },
+              { name: 'Jakub',  pct: 85 },
+              { name: 'Tomáš',  pct: 88 },
+              { name: 'Pavel',  pct: 78 },
             ].map((barber) => (
               <div key={barber.name} className="flex items-center gap-3">
                 <span className="text-xs text-white/50 w-12">{barber.name}</span>
                 <div className="flex-1 h-2 bg-white/5 rounded-full overflow-hidden">
                   <div
                     className="h-full bg-gold/60 rounded-full transition-all duration-1000"
-                    style={{
-                      width: isInView ? `${barber.pct}%` : '0%',
-                      transitionDelay: '800ms',
-                    }}
+                    style={{ width: isInView ? `${barber.pct}%` : '0%', transitionDelay: '800ms' }}
                   />
                 </div>
                 <span className="text-xs text-white/40">{barber.pct}%</span>
@@ -130,6 +121,7 @@ function StatsMockup({ isInView }) {
 
 export default function Admin() {
   const [ref, isInView] = useInView()
+  const { t } = useLanguage()
 
   return (
     <section id="admin" className="py-24 sm:py-32 px-6">
@@ -140,9 +132,9 @@ export default function Admin() {
           }`}
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            Kontrola pro váš <span className="text-gold">byznys.</span>
+            {t('admin', 'h1')} <span className="text-gold">{t('admin', 'h2')}</span>
           </h2>
-          <p className="text-white/50 text-lg">Všechno na jednom místě, přehledně a intuitivně.</p>
+          <p className="text-white/50 text-lg">{t('admin', 'p')}</p>
         </div>
 
         <DashboardMockup isInView={isInView} />
@@ -154,7 +146,7 @@ export default function Admin() {
           }`}
           style={{ transitionDelay: '600ms' }}
         >
-          Kompletní správa byznysu <span className="text-gold font-semibold">ve vaší kapse.</span>
+          {t('admin', 'footer')} <span className="text-gold font-semibold">{t('admin', 'footerBold')}</span>
         </p>
       </div>
     </section>

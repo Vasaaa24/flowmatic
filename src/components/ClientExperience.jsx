@@ -1,4 +1,5 @@
 import { useInView } from '../hooks/useInView'
+import { useLanguage } from '../context/LanguageContext'
 
 function PhoneMockup({ children, delay = 0, isInView }) {
   return (
@@ -9,11 +10,8 @@ function PhoneMockup({ children, delay = 0, isInView }) {
       style={{ transitionDelay: `${delay}ms` }}
     >
       <div className="relative mx-auto w-[240px] sm:w-[260px]">
-        {/* Phone frame */}
         <div className="relative bg-dark-card border-2 border-white/10 rounded-[2.5rem] p-3 shadow-2xl shadow-black/50">
-          {/* Notch */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-6 bg-dark-card rounded-b-2xl z-10 border-b-2 border-x-2 border-white/10" />
-          {/* Screen */}
           <div className="bg-dark rounded-[2rem] overflow-hidden pt-8 pb-6 px-4 min-h-[380px] flex flex-col">
             {children}
           </div>
@@ -73,9 +71,7 @@ function TimeSlot({ time, selected }) {
   return (
     <div
       className={`py-2 px-3 rounded-lg text-center text-sm font-medium transition-all ${
-        selected
-          ? 'bg-gold text-dark'
-          : 'bg-white/5 text-white/60 border border-white/10'
+        selected ? 'bg-gold text-dark' : 'bg-white/5 text-white/60 border border-white/10'
       }`}
     >
       {time}
@@ -85,6 +81,7 @@ function TimeSlot({ time, selected }) {
 
 export default function ClientExperience() {
   const [ref, isInView] = useInView()
+  const { t } = useLanguage()
 
   return (
     <section id="client" className="py-24 sm:py-32 px-6 relative">
@@ -97,30 +94,27 @@ export default function ClientExperience() {
           }`}
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            Zážitek pro vaše <span className="text-gold">klienty.</span>
+            {t('client', 'h1')} <span className="text-gold">{t('client', 'h2')}</span>
           </h2>
-          <p className="text-white/50 text-lg">Jednoduchý, rychlý, elegantní — přizpůsobený vašemu oboru.</p>
+          <p className="text-white/50 text-lg">{t('client', 'p')}</p>
         </div>
 
-        {/* 3 iPhones */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-          {/* Phone 1 - Service Selection */}
           <PhoneMockup delay={100} isInView={isInView}>
             <div className="text-center mb-4">
-              <div className="text-xs text-gold font-semibold uppercase tracking-wider mb-1">Krok 1</div>
-              <div className="text-base font-semibold">Vyber službu</div>
+              <div className="text-xs text-gold font-semibold uppercase tracking-wider mb-1">{t('client', 'step1')}</div>
+              <div className="text-base font-semibold">{t('client', 'step1label')}</div>
             </div>
-            <ServiceItem icon="✂️" name="Střih" duration="30 min" price="450 Kč" selected />
-            <ServiceItem icon="🧔" name="Brada" duration="20 min" price="300 Kč" selected={false} />
-            <ServiceItem icon="💈" name="Střih + Brada" duration="45 min" price="650 Kč" selected={false} />
-            <ServiceItem icon="🧖" name="Royal balíček" duration="60 min" price="900 Kč" selected={false} />
+            <ServiceItem icon="✂️" name={t('client', 's1')} duration={t('client', 's1d')} price={t('client', 's1p')} selected />
+            <ServiceItem icon="🧔" name={t('client', 's2')} duration={t('client', 's2d')} price={t('client', 's2p')} selected={false} />
+            <ServiceItem icon="💈" name={t('client', 's3')} duration={t('client', 's3d')} price={t('client', 's3p')} selected={false} />
+            <ServiceItem icon="🧖" name={t('client', 's4')} duration={t('client', 's4d')} price={t('client', 's4p')} selected={false} />
           </PhoneMockup>
 
-          {/* Phone 2 - Staff Selection */}
           <PhoneMockup delay={300} isInView={isInView}>
             <div className="text-center mb-4">
-              <div className="text-xs text-gold font-semibold uppercase tracking-wider mb-1">Krok 2</div>
-              <div className="text-base font-semibold">Vyber specialistu</div>
+              <div className="text-xs text-gold font-semibold uppercase tracking-wider mb-1">{t('client', 'step2')}</div>
+              <div className="text-base font-semibold">{t('client', 'step2label')}</div>
             </div>
             <div className="grid grid-cols-2 gap-3 mt-2">
               <BarberItem name="Martin" rating={5} selected />
@@ -130,13 +124,12 @@ export default function ClientExperience() {
             </div>
           </PhoneMockup>
 
-          {/* Phone 3 - Time Selection */}
           <PhoneMockup delay={500} isInView={isInView}>
             <div className="text-center mb-4">
-              <div className="text-xs text-gold font-semibold uppercase tracking-wider mb-1">Krok 3</div>
-              <div className="text-base font-semibold">Vyber termín</div>
+              <div className="text-xs text-gold font-semibold uppercase tracking-wider mb-1">{t('client', 'step3')}</div>
+              <div className="text-base font-semibold">{t('client', 'step3label')}</div>
             </div>
-            <div className="text-sm text-white/40 text-center mb-3">Středa, 16. dubna</div>
+            <div className="text-sm text-white/40 text-center mb-3">{t('client', 'date')}</div>
             <div className="grid grid-cols-3 gap-2">
               <TimeSlot time="9:00" />
               <TimeSlot time="9:30" />
@@ -150,7 +143,7 @@ export default function ClientExperience() {
             </div>
             <div className="mt-auto pt-4">
               <button className="w-full bg-gold text-dark font-bold py-3 rounded-xl text-sm">
-                Potvrdit rezervaci
+                {t('client', 'confirmBtn')}
               </button>
             </div>
           </PhoneMockup>
@@ -161,7 +154,7 @@ export default function ClientExperience() {
             isInView ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          Rezervace na <span className="text-gold font-semibold">3 kliknutí</span>, 24 hodin denně — služby přizpůsobíme vašemu byznysu.
+          {t('client', 'footer')} <span className="text-gold font-semibold">{t('client', 'footerBold')}</span>{t('client', 'footerEnd')}
         </p>
       </div>
     </section>
