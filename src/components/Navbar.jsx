@@ -3,24 +3,16 @@ import { useLanguage } from '../context/LanguageContext'
 
 function LangSwitch() {
   const { lang, setLang } = useLanguage()
-  const isUk = lang === 'uk'
 
   return (
-    <button
-      onClick={() => setLang(isUk ? 'cs' : 'uk')}
-      aria-label="Přepnout jazyk"
-      className="flex items-center gap-2 select-none"
+    <select
+      value={lang}
+      onChange={(e) => setLang(e.target.value)}
+      className="bg-transparent border border-white/20 rounded-lg px-2 py-1 text-sm text-white/70 focus:outline-none focus:border-gold/50 cursor-pointer"
     >
-      <span className={`text-sm transition-opacity ${isUk ? 'opacity-30' : 'opacity-100'}`}>🇨🇿</span>
-      <div className="relative w-10 h-5 rounded-full bg-white/10 border border-white/20 transition-colors">
-        <div
-          className={`absolute top-0.5 w-4 h-4 rounded-full bg-gold shadow transition-all duration-300 ${
-            isUk ? 'left-5' : 'left-0.5'
-          }`}
-        />
-      </div>
-      <span className={`text-sm transition-opacity ${isUk ? 'opacity-100' : 'opacity-30'}`}>🇺🇦</span>
-    </button>
+      <option value="cs" className="bg-dark">🇨🇿 CZ</option>
+      <option value="uk" className="bg-dark">🇺🇦 UA</option>
+    </select>
   )
 }
 
@@ -91,10 +83,7 @@ export default function Navbar() {
               </a>
             ))}
 
-            <div className="flex items-center gap-3 py-1">
-              <span className="text-sm text-white/40">Jazyk / Мова</span>
-              <LangSwitch />
-            </div>
+            <LangSwitch />
 
             <a href="#contact"
               className="bg-gold text-dark font-semibold text-center px-5 py-2.5 rounded-full"
