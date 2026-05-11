@@ -1,6 +1,7 @@
 import { useReveal } from '../hooks/useReveal'
 import { useLanguage } from '../context/LanguageContext'
 import TiltCard from './TiltCard'
+import SplitText from './SplitText'
 
 export default function Problem() {
   const ref = useReveal()
@@ -40,10 +41,10 @@ export default function Problem() {
     <section id="problem" className="py-24 sm:py-32 px-6">
       <div ref={ref} className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="fx-reveal text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-            {t('problem', 'h1')}
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+            <SplitText>{t('problem', 'h1')}</SplitText>
             <br />
-            <span className="text-gold">{t('problem', 'h2')}</span>
+            <SplitText delay={200}><span className="text-gold">{t('problem', 'h2')}</span></SplitText>
           </h2>
           <p className="fx-reveal fx-d-1 text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
             {t('problem', 'p')}

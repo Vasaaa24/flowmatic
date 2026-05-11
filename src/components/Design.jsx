@@ -2,73 +2,165 @@ import { useReveal } from '../hooks/useReveal'
 import { useLanguage } from '../context/LanguageContext'
 import MagneticButton from './MagneticButton'
 import TiltCard from './TiltCard'
+import SplitText from './SplitText'
 
-const icons = [
-  <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-    <path d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
-  </svg>,
-  <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-    <path d="M4.098 19.902a3.75 3.75 0 005.304 0l6.401-6.402M6.75 21A3.75 3.75 0 013 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 003.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008z" />
-  </svg>,
-  <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-    <path d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zM12 6.75A2.25 2.25 0 119.75 4.5 2.25 2.25 0 0112 6.75zM4.875 11.25a2.625 2.625 0 100-5.25 2.625 2.625 0 000 5.25zM19.5 11.25a2.625 2.625 0 100-5.25 2.625 2.625 0 000 5.25zM16.5 17.625a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
-  </svg>,
-]
+/* ─── Visual mockups shown inside each card ─── */
+
+function LogoPreview() {
+  return (
+    <div className="relative flex-1 min-h-[280px] rounded-xl bg-gradient-to-br from-gold/15 via-dark-card to-dark flex items-center justify-center overflow-hidden border border-gold/10">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,193,7,0.22),transparent_60%)]" />
+
+      {/* Decorative corner marks */}
+      <div className="absolute top-3 left-3 w-4 h-4 border-l-2 border-t-2 border-gold/40" />
+      <div className="absolute top-3 right-3 w-4 h-4 border-r-2 border-t-2 border-gold/40" />
+      <div className="absolute bottom-3 left-3 w-4 h-4 border-l-2 border-b-2 border-gold/40" />
+      <div className="absolute bottom-3 right-3 w-4 h-4 border-r-2 border-b-2 border-gold/40" />
+
+      <div className="absolute top-4 left-1/2 -translate-x-1/2 text-[10px] font-mono text-gold/50 tracking-[0.3em] uppercase">
+        Brand mark
+      </div>
+
+      <div className="relative">
+        <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center shadow-2xl shadow-gold/40">
+          <span className="text-5xl sm:text-6xl font-black text-dark tracking-tighter">V</span>
+        </div>
+        <div className="absolute -inset-4 rounded-full border border-gold/30 animate-[pulse_3s_ease-in-out_infinite]" />
+        <div className="absolute -inset-8 rounded-full border border-gold/15" />
+        <div className="absolute -inset-12 rounded-full border border-gold/8" />
+      </div>
+
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-3 text-[10px] font-mono text-white/30">
+        <span>1:1</span>
+        <span className="w-1 h-1 rounded-full bg-gold/40" />
+        <span>SVG</span>
+        <span className="w-1 h-1 rounded-full bg-gold/40" />
+        <span>PNG</span>
+      </div>
+    </div>
+  )
+}
+
+function BrandPreview() {
+  const swatches = ['#FFC107', '#0d0d0d', '#ffffff', '#7a6e4a']
+  return (
+    <div className="relative h-24 sm:h-28 rounded-xl bg-dark p-3 flex flex-col justify-between overflow-hidden border border-white/5">
+      <div className="flex gap-1.5">
+        {swatches.map((c, i) => (
+          <div
+            key={i}
+            className="flex-1 h-5 rounded-sm shadow-inner shadow-black/30"
+            style={{ background: c }}
+          />
+        ))}
+      </div>
+      <div className="flex items-baseline gap-2">
+        <span className="font-serif italic text-2xl text-gold leading-none">Aa</span>
+        <span className="font-sans font-bold text-base text-white leading-none">Bb</span>
+        <span className="font-mono text-xs text-white/50 leading-none">— 01</span>
+      </div>
+    </div>
+  )
+}
+
+function GraphicPreview() {
+  return (
+    <div className="relative h-24 sm:h-28 rounded-xl bg-dark p-3 flex items-center gap-2 overflow-hidden border border-white/5">
+      {/* Business card mock */}
+      <div className="w-12 h-16 rounded-sm bg-gradient-to-br from-gold/80 to-gold-dark p-1.5 shrink-0 shadow-lg shadow-gold/20">
+        <div className="w-1.5 h-1.5 rounded-full bg-dark mb-1" />
+        <div className="h-0.5 w-6 bg-dark/70 mb-0.5" />
+        <div className="h-0.5 w-4 bg-dark/50" />
+      </div>
+      {/* Flyer mock */}
+      <div className="flex-1 h-16 rounded-sm bg-dark-card border border-white/10 p-1.5 flex flex-col gap-1">
+        <div className="h-1 w-3/4 bg-gold/70 rounded-full" />
+        <div className="h-0.5 w-full bg-white/20 rounded-full" />
+        <div className="h-0.5 w-5/6 bg-white/15 rounded-full" />
+        <div className="h-0.5 w-2/3 bg-white/15 rounded-full" />
+        <div className="mt-auto h-1.5 w-8 rounded-full bg-gold/80" />
+      </div>
+      {/* Social post mock */}
+      <div className="w-12 h-16 rounded-sm bg-gradient-to-br from-dark-card to-dark border border-gold/20 p-1.5 shrink-0 flex flex-col items-center justify-center">
+        <div className="w-3 h-3 rounded-full bg-gold mb-1" />
+        <div className="h-0.5 w-6 bg-white/30 rounded-full" />
+      </div>
+    </div>
+  )
+}
 
 export default function Design() {
   const ref = useReveal()
   const { t } = useLanguage()
 
-  const features = [
-    { icon: icons[0], title: t('design', 'f1title'), text: t('design', 'f1text') },
-    { icon: icons[1], title: t('design', 'f2title'), text: t('design', 'f2text') },
-    { icon: icons[2], title: t('design', 'f3title'), text: t('design', 'f3text') },
-  ]
-
   return (
     <section id="design" className="py-24 sm:py-32 px-6 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gold/[0.02] to-transparent" />
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full bg-gold/[0.04] blur-[120px]" />
+        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-gold/[0.03] blur-[100px]" />
+      </div>
 
-      <div ref={ref} className="relative z-10 max-w-5xl mx-auto">
+      <div ref={ref} className="relative z-10 max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="fx-reveal text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            {t('design', 'h1')}
+          <div className="fx-reveal inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-gold/10 border border-gold/20">
+            <svg className="w-3.5 h-3.5 text-gold" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <span className="text-xs font-semibold text-gold uppercase tracking-wider">Studio</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+            <SplitText>{t('design', 'h1')}</SplitText>
             <br />
-            <span className="text-gold">{t('design', 'h2')}</span>
+            <SplitText delay={200}><span className="text-gold">{t('design', 'h2')}</span></SplitText>
           </h2>
           <p className="fx-reveal fx-d-1 text-white/50 text-lg max-w-2xl mx-auto">{t('design', 'p')}</p>
         </div>
 
-        <div className="grid sm:grid-cols-3 gap-6 mb-12">
-          {features.map((feature, i) => (
-            <TiltCard
-              key={i}
-              className={`fx-reveal fx-d-${i + 2} fx-glow-hover group bg-dark-card border border-white/5 rounded-2xl p-6 hover:border-gold/20`}
-            >
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gold/10 text-gold mb-4 group-hover:bg-gold/20 transition-colors">
-                {feature.icon}
-              </div>
-              <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-              <p className="text-white/50 text-sm leading-relaxed">{feature.text}</p>
-            </TiltCard>
-          ))}
+        {/* Asymmetric grid: hero logo card (3) + stacked column (2) */}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-12">
+          <TiltCard className="fx-reveal fx-d-2 fx-glow-hover group lg:col-span-3 lg:row-span-2 bg-dark-card border border-white/5 rounded-3xl p-6 sm:p-8 hover:border-gold/20 flex flex-col">
+            <LogoPreview />
+            <div className="mt-6">
+              <h3 className="text-xl sm:text-2xl font-bold mb-2">{t('design', 'f1title')}</h3>
+              <p className="text-white/60 text-sm sm:text-base leading-relaxed">{t('design', 'f1text')}</p>
+            </div>
+          </TiltCard>
+
+          <TiltCard className="fx-reveal fx-d-3 fx-glow-hover group lg:col-span-2 bg-dark-card border border-white/5 rounded-3xl p-6 hover:border-gold/20">
+            <BrandPreview />
+            <div className="mt-4">
+              <h3 className="text-lg font-semibold mb-1">{t('design', 'f2title')}</h3>
+              <p className="text-white/50 text-sm leading-relaxed">{t('design', 'f2text')}</p>
+            </div>
+          </TiltCard>
+
+          <TiltCard className="fx-reveal fx-d-4 fx-glow-hover group lg:col-span-2 bg-dark-card border border-white/5 rounded-3xl p-6 hover:border-gold/20">
+            <GraphicPreview />
+            <div className="mt-4">
+              <h3 className="text-lg font-semibold mb-1">{t('design', 'f3title')}</h3>
+              <p className="text-white/50 text-sm leading-relaxed">{t('design', 'f3text')}</p>
+            </div>
+          </TiltCard>
         </div>
 
-        <div className="fx-reveal fx-d-5 fx-trace-border bg-dark-card border border-white/5 rounded-3xl p-8 sm:p-10 text-center">
-          <div className="text-xs text-gold font-semibold uppercase tracking-wider mb-3">
-            {t('design', 'priceLabel')}
+        <div className="fx-reveal fx-d-5 fx-trace-border relative overflow-hidden bg-dark-card border border-white/5 rounded-3xl p-8 sm:p-10 text-center">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,193,7,0.06),transparent_70%)] pointer-events-none" />
+          <div className="relative">
+            <div className="text-xs text-gold font-semibold uppercase tracking-wider mb-3">
+              {t('design', 'priceLabel')}
+            </div>
+            <p className="text-xl sm:text-2xl font-semibold mb-3">{t('design', 'priceText')}</p>
+            <p className="text-white/50 text-sm mb-6 max-w-xl mx-auto">{t('design', 'priceNote')}</p>
+            <MagneticButton
+              href="#contact"
+              className="inline-flex items-center gap-2 bg-gold text-dark font-bold px-8 py-3.5 rounded-full hover:bg-gold-light shadow-lg shadow-gold/20"
+            >
+              {t('design', 'cta')}
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </MagneticButton>
           </div>
-          <p className="text-xl sm:text-2xl font-semibold mb-3">{t('design', 'priceText')}</p>
-          <p className="text-white/50 text-sm mb-6 max-w-xl mx-auto">{t('design', 'priceNote')}</p>
-          <MagneticButton
-            href="#contact"
-            className="inline-flex items-center gap-2 bg-gold text-dark font-bold px-8 py-3.5 rounded-full hover:bg-gold-light shadow-lg shadow-gold/20"
-          >
-            {t('design', 'cta')}
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-              <path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-            </svg>
-          </MagneticButton>
         </div>
       </div>
     </section>

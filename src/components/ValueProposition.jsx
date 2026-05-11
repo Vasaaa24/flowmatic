@@ -1,6 +1,7 @@
 import { useReveal } from '../hooks/useReveal'
 import { useLanguage } from '../context/LanguageContext'
 import TiltCard from './TiltCard'
+import SplitText from './SplitText'
 
 const icons = [
   <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -34,10 +35,10 @@ export default function ValueProposition() {
 
       <div ref={ref} className="relative z-10 max-w-5xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="fx-reveal text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            {t('value', 'h1')}
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+            <SplitText>{t('value', 'h1')}</SplitText>
             <br />
-            <span className="text-gold">{t('value', 'h2')}</span>
+            <SplitText delay={200}><span className="text-gold">{t('value', 'h2')}</span></SplitText>
           </h2>
           <p className="fx-reveal fx-d-1 text-white/50 text-lg">{t('value', 'p')}</p>
         </div>

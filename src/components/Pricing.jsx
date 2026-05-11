@@ -1,6 +1,7 @@
 import { useReveal } from '../hooks/useReveal'
 import { useLanguage } from '../context/LanguageContext'
 import MagneticButton from './MagneticButton'
+import SplitText from './SplitText'
 
 export default function Pricing() {
   const ref = useReveal()
@@ -15,10 +16,10 @@ export default function Pricing() {
     <section id="pricing" className="py-24 sm:py-32 px-6">
       <div ref={ref} className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="fx-reveal text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            {t('pricing', 'h1')}
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+            <SplitText>{t('pricing', 'h1')}</SplitText>
             <br />
-            <span className="text-gold">{t('pricing', 'h2')}</span>
+            <SplitText delay={200}><span className="text-gold">{t('pricing', 'h2')}</span></SplitText>
           </h2>
           <p className="fx-reveal fx-d-1 text-white/50 text-lg">{t('pricing', 'p')}</p>
         </div>

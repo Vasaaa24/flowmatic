@@ -24,7 +24,7 @@ export default function CursorSpotlight() {
     const loop = () => {
       cx += (tx - cx) * 0.18
       cy += (ty - cy) * 0.18
-      el.style.transform = `translate3d(${cx - 300}px, ${cy - 300}px, 0)`
+      el.style.transform = `translate3d(${cx - 250}px, ${cy - 250}px, 0)`
       if (Math.abs(tx - cx) > 0.3 || Math.abs(ty - cy) > 0.3) {
         raf = requestAnimationFrame(loop)
       } else {

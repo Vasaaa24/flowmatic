@@ -1,74 +1,65 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Intro() {
   const [visible, setVisible] = useState(true)
-  const [stage, setStage] = useState('boot')
-  const screenRef = useRef(null)
-  const cameraRef = useRef(null)
-
-  // Compute the exact scale needed so the laptop screen fills the viewport.
-  useEffect(() => {
-    if (!visible) return
-    const compute = () => {
-      const screen = screenRef.current
-      const camera = cameraRef.current
-      if (!screen || !camera) return
-      const rect = screen.getBoundingClientRect()
-      const scaleX = window.innerWidth / rect.width
-      const scaleY = window.innerHeight / rect.height
-      const scale = Math.max(scaleX, scaleY)
-      camera.style.setProperty('--intro-scale', scale.toFixed(3))
-    }
-    compute()
-    window.addEventListener('resize', compute)
-    return () => window.removeEventListener('resize', compute)
-  }, [visible])
+  const [fading, setFading] = useState(false)
 
   useEffect(() => {
     if (!visible) return
     document.documentElement.classList.add('intro-lock')
 
-    const t1 = setTimeout(() => setStage('zoom'), 1100)
-    const t2 = setTimeout(() => setStage('fade'), 2200)
-    const t3 = setTimeout(() => {
+    const t1 = setTimeout(() => setFading(true), 1900)
+    const t2 = setTimeout(() => {
       document.documentElement.classList.remove('intro-lock')
       setVisible(false)
-    }, 2900)
+    }, 2600)
 
     return () => {
-      clearTimeout(t1); clearTimeout(t2); clearTimeout(t3)
+      clearTimeout(t1); clearTimeout(t2)
       document.documentElement.classList.remove('intro-lock')
     }
   }, [visible])
 
   if (!visible) return null
 
-  return (
-    <div className={`intro-root ${stage === 'fade' ? 'intro-out' : ''}`}>
-      <div className="intro-bg" />
-      <div className={`intro-stage intro-stage-${stage}`}>
-        <div className="intro-camera" ref={cameraRef}>
-          <div className="intro-laptop">
-            {/* Camera notch */}
-            <div className="intro-notch" />
-            {/* Screen */}
-            <div className="intro-screen" ref={screenRef}>
-              <div className="intro-mock">
-                <div className="intro-mock-title">
-                  <span className="text-gold">VAL</span>TON
-                </div>
-              </div>
-            </div>
-            {/* Hinge */}
-            <div className="intro-hinge" />
-            {/* Base */}
-            <div className="intro-base" />
-          </div>
+  const letters = [
+    { c: 'V', gold: true },
+    { c: 'A', gold: true },
+    { c: 'L', gold: true },
+    { c: 'T', gold: false },
+    { c: 'O', gold: false },
+    { c: 'N', gold: false },
+  ]
 
-          {/* Floor reflection / glow */}
-          <div className="intro-floor" />
+  return (
+    <div className={`intro-root ${fading ? 'intro-out' : ''}`}>
+      <div className="intro-mark">
+        <svg
+          className="intro-arrow"
+          viewBox="0 0 20 20"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M6 14 L14 6" />
+          <path d="M7 6 L14 6 L14 13" />
+        </svg>
+        <div className="intro-wordmark">
+          {letters.map((l, i) => (
+            <span
+              key={i}
+              className={`intro-letter ${l.gold ? 'intro-letter-gold' : ''}`}
+              style={{ animationDelay: `${320 + i * 70}ms` }}
+            >
+              {l.c}
+            </span>
+          ))}
         </div>
       </div>
+      <div className="intro-underline" />
     </div>
   )
 }

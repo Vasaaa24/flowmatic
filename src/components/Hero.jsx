@@ -1,16 +1,16 @@
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import { useLanguage } from '../context/LanguageContext'
-import { useParallax } from '../hooks/useParallax'
+import { useScrollProgress } from '../hooks/useScrollProgress'
 import MagneticButton from './MagneticButton'
+import SplitText from './SplitText'
 
 export default function Hero() {
   const { t } = useLanguage()
-  const rootRef = useRef(null)
-  const orbRef = useParallax(-0.25)
+  const scrollFxRef = useScrollProgress('out')
 
   // Reveal everything on mount — Hero is above the fold.
   useEffect(() => {
-    const el = rootRef.current
+    const el = scrollFxRef.current
     if (!el) return
     const id = requestAnimationFrame(() => {
       el.querySelectorAll('.fx-reveal').forEach((n) => n.classList.add('is-visible'))
@@ -21,27 +21,35 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+      className="relative min-h-[100dvh] flex items-center justify-center pt-24 pb-16"
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div ref={orbRef} className="parallax-centered absolute top-1/4 left-1/2 w-[600px] h-[600px] rounded-full bg-gold/5 blur-[120px]" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gold/5 blur-[80px]" />
       </div>
 
-      <div ref={rootRef} className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-        <div className="fx-reveal inline-flex items-center gap-2 bg-gold/10 border border-gold/20 rounded-full px-4 py-1.5 mb-8">
+      <div ref={scrollFxRef} className="hero-scroll-fx relative z-10 max-w-4xl mx-auto px-6 text-center">
+        <div className="fx-reveal inline-flex items-center gap-2 bg-gold/10 border border-gold/20 rounded-full px-4 py-1.5 mb-6">
           <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
           <span className="text-gold text-sm font-medium">{t('hero', 'badge')}</span>
         </div>
 
-        <h1 className="fx-reveal fx-d-1 text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight mb-6 tracking-tight">
-          {t('hero', 'h1a')}{' '}
-          <span className="text-gold">{t('hero', 'h1b')}</span>
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-5 tracking-tight">
+          <SplitText stagger={26}>
+            {t('hero', 'h1a')}{' '}
+          </SplitText>
+          <SplitText stagger={26} delay={180}>
+            <span className="text-gold">{t('hero', 'h1b')}</span>
+          </SplitText>
           <br />
-          {t('hero', 'h1c')}{' '}
-          <span className="text-gold">{t('hero', 'h1d')}</span>
+          <SplitText stagger={26} delay={380}>
+            {t('hero', 'h1c')}{' '}
+          </SplitText>
+          <SplitText stagger={26} delay={520}>
+            <span className="text-gold">{t('hero', 'h1d')}</span>
+          </SplitText>
         </h1>
 
-        <p className="fx-reveal fx-d-2 text-lg sm:text-xl text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed">
+        <p className="fx-reveal fx-d-2 text-base sm:text-lg text-white/60 max-w-2xl mx-auto mb-8 leading-relaxed">
           {t('hero', 'p')}
         </p>
 
@@ -63,7 +71,7 @@ export default function Hero() {
           </MagneticButton>
         </div>
 
-        <div className="mt-16 grid grid-cols-3 gap-4 sm:gap-8 max-w-xl mx-auto">
+        <div className="mt-10 grid grid-cols-3 gap-4 sm:gap-8 max-w-xl mx-auto">
           {[
             { value: t('hero', 'stat1val'), label: t('hero', 'stat1') },
             { value: t('hero', 'stat2val'), label: t('hero', 'stat2') },

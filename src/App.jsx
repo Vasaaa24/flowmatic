@@ -4,6 +4,7 @@ import Intro from './components/Intro'
 import AmbientBackground from './components/AmbientBackground'
 import CursorSpotlight from './components/CursorSpotlight'
 import ScrollProgress from './components/ScrollProgress'
+import FlyThroughDivider from './components/FlyThroughDivider'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Problem from './components/Problem'
@@ -30,15 +31,22 @@ export default function App() {
       <div className="min-h-screen bg-dark text-white overflow-x-hidden">
         <Navbar />
         <Hero />
+        <FlyThroughDivider variant="line" />
         <Problem />
+        <FlyThroughDivider variant="plus" />
         <ClientExperience />
+        <FlyThroughDivider variant="diamond" />
         <Admin />
+        <FlyThroughDivider variant="arrow" />
         <AppPreview />
         <ValueProposition />
+        <FlyThroughDivider variant="ring" />
         <Pricing />
         <Websites />
+        <FlyThroughDivider variant="diamond" />
         <Design />
         <Reviews />
+        <FlyThroughDivider variant="ring" />
         <Contact />
         <Footer />
       </div>

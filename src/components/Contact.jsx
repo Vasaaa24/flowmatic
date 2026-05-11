@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useReveal } from '../hooks/useReveal'
 import { useLanguage } from '../context/LanguageContext'
+import SplitText from './SplitText'
 
 const COUNTRY_CODES = [
   { code: '+420', flag: '🇨🇿', label: 'CZ' },
@@ -104,9 +105,9 @@ export default function Contact() {
     <section id="contact" className="py-24 sm:py-32 px-6">
       <div ref={ref} className="max-w-2xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="fx-reveal text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            {t('contact', 'h1')}{' '}
-            <span className="text-gold">{t('contact', 'h2')}</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+            <SplitText>{t('contact', 'h1')}{' '}</SplitText>
+            <SplitText delay={200}><span className="text-gold">{t('contact', 'h2')}</span></SplitText>
           </h2>
           <p className="fx-reveal fx-d-1 text-lg text-white/60 max-w-xl mx-auto leading-relaxed">
             {t('contact', 'p')}

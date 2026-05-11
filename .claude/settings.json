@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(head -336 src/index.css)",
+      "Bash(tail -25 src/index.css)",
+      "Read(//tmp/**)"
+    ]
+  }
+}
