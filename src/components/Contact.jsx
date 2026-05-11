@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useInView } from '../hooks/useInView'
+import { useReveal } from '../hooks/useReveal'
 import { useLanguage } from '../context/LanguageContext'
 
 const COUNTRY_CODES = [
@@ -18,7 +18,7 @@ const COUNTRY_CODES = [
 ]
 
 export default function Contact() {
-  const [ref, isInView] = useInView()
+  const ref = useReveal()
   const { t } = useLanguage()
   const [form, setForm] = useState({ name: '', email: '', phone: '', dialCode: '+420', business: '', message: '' })
   const [gdpr, setGdpr] = useState(false)
@@ -102,18 +102,13 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-24 sm:py-32 px-6">
-      <div
-        ref={ref}
-        className={`max-w-2xl mx-auto transition-all duration-700 ${
-          isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}
-      >
+      <div ref={ref} className="max-w-2xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="fx-reveal text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
             {t('contact', 'h1')}{' '}
             <span className="text-gold">{t('contact', 'h2')}</span>
           </h2>
-          <p className="text-lg text-white/60 max-w-xl mx-auto leading-relaxed">
+          <p className="fx-reveal fx-d-1 text-lg text-white/60 max-w-xl mx-auto leading-relaxed">
             {t('contact', 'p')}
           </p>
         </div>
@@ -132,7 +127,7 @@ export default function Contact() {
             </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} noValidate className="bg-dark-card border border-white/5 rounded-3xl p-8 sm:p-10 space-y-5">
+          <form onSubmit={handleSubmit} noValidate className="fx-reveal fx-d-2 fx-trace-border bg-dark-card border border-white/5 rounded-3xl p-8 sm:p-10 space-y-5">
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
                 <label className="block text-sm text-white/50 mb-2">{t('contact', 'labelName')} *</label>
@@ -204,7 +199,7 @@ export default function Contact() {
             {status === 'error' && <p className="text-red-400 text-sm">{t('contact', 'errSend')}</p>}
 
             <button type="submit" disabled={status === 'sending'}
-              className="w-full bg-gold text-dark font-bold text-base py-4 rounded-full hover:bg-gold-light transition-all duration-300 hover:scale-[1.02] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg shadow-gold/20">
+              className="fx-magnetic w-full bg-gold text-dark font-bold text-base py-4 rounded-full hover:bg-gold-light disabled:opacity-60 disabled:cursor-not-allowed shadow-lg shadow-gold/20">
               {status === 'sending' ? t('contact', 'submitting') : t('contact', 'submitBtn')}
             </button>
 

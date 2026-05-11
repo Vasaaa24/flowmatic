@@ -1,5 +1,6 @@
-import { useInView } from '../hooks/useInView'
+import { useReveal } from '../hooks/useReveal'
 import { useLanguage } from '../context/LanguageContext'
+import TiltCard from './TiltCard'
 
 const icons = [
   <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -17,7 +18,7 @@ const icons = [
 ]
 
 export default function ValueProposition() {
-  const [ref, isInView] = useInView()
+  const ref = useReveal()
   const { t } = useLanguage()
 
   const features = [
@@ -32,34 +33,27 @@ export default function ValueProposition() {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gold/[0.02] to-transparent" />
 
       <div ref={ref} className="relative z-10 max-w-5xl mx-auto">
-        <div
-          className={`text-center mb-16 transition-all duration-700 ${
-            isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+        <div className="text-center mb-16">
+          <h2 className="fx-reveal text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
             {t('value', 'h1')}
             <br />
             <span className="text-gold">{t('value', 'h2')}</span>
           </h2>
-          <p className="text-white/50 text-lg">{t('value', 'p')}</p>
+          <p className="fx-reveal fx-d-1 text-white/50 text-lg">{t('value', 'p')}</p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, i) => (
-            <div
+            <TiltCard
               key={i}
-              className={`group bg-dark-card border border-white/5 rounded-2xl p-6 text-center transition-all duration-500 hover:border-gold/20 hover:shadow-lg hover:shadow-gold/5 hover:-translate-y-1 ${
-                isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
-              style={{ transitionDelay: `${(i + 1) * 150}ms` }}
+              className={`fx-reveal fx-d-${i + 2} fx-glow-hover group bg-dark-card border border-white/5 rounded-2xl p-6 text-center hover:border-gold/20`}
             >
               <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gold/10 text-gold mb-4 group-hover:bg-gold/20 transition-colors">
                 {feature.icon}
               </div>
               <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
               <p className="text-white/50 text-sm leading-relaxed">{feature.text}</p>
-            </div>
+            </TiltCard>
           ))}
         </div>
       </div>

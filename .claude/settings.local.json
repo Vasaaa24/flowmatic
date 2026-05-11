@@ -1,5 +1,14 @@
 {
   "env": {
     "OTEL_RESOURCE_ATTRIBUTES": "repository.url=github.com/Vasaaa24/flowmatic"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)"
+    ]
   }
 }

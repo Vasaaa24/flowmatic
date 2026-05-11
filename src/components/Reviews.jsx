@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
-import { useInView } from '../hooks/useInView'
+import { useReveal } from '../hooks/useReveal'
 import { useLanguage } from '../context/LanguageContext'
 
 const reviews = {
@@ -92,7 +92,7 @@ function Stars({ count }) {
 }
 
 export default function Reviews() {
-  const [ref, isInView] = useInView()
+  const ref = useReveal()
   const { lang } = useLanguage()
   const list = reviews[lang] ?? reviews.cs
   const [active, setActive] = useState(0)
@@ -137,16 +137,16 @@ export default function Reviews() {
     <section id="reviews" className="py-24 sm:py-32 px-6 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gold/[0.02] to-transparent" />
 
-      <div ref={ref} className={`relative z-10 max-w-3xl mx-auto transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+      <div ref={ref} className="relative z-10 max-w-3xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="fx-reveal text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
             {lang === 'uk' ? 'Що кажуть' : 'Co říkají'}{' '}
             <span className="text-gold">{lang === 'uk' ? 'клієнти.' : 'klienti.'}</span>
           </h2>
         </div>
 
         {/* Arrows + Card row */}
-        <div className="flex items-center gap-2 sm:gap-4">
+        <div className="fx-reveal fx-d-1 flex items-center gap-2 sm:gap-4">
           <button onClick={prev} className="shrink-0 w-9 h-9 flex items-center justify-center rounded-full border border-white/10 text-white/40 hover:text-gold hover:border-gold/40 transition-colors">
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path d="M15 19l-7-7 7-7" /></svg>
           </button>

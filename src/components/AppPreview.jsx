@@ -1,30 +1,25 @@
-import { useInView } from '../hooks/useInView'
+import { useReveal } from '../hooks/useReveal'
 import { useLanguage } from '../context/LanguageContext'
 
 export default function AppPreview() {
-  const [ref, isInView] = useInView()
+  const ref = useReveal()
   const { t } = useLanguage()
 
   return (
     <section id="preview" className="py-24 sm:py-32 px-6">
-      <div
-        ref={ref}
-        className={`max-w-5xl mx-auto transition-all duration-700 ${
-          isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}
-      >
+      <div ref={ref} className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="fx-reveal text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
             {t('preview', 'h1')}{' '}
             <span className="text-gold">{t('preview', 'h2')}</span>
           </h2>
-          <p className="text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
+          <p className="fx-reveal fx-d-1 text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
             {t('preview', 'p')}
           </p>
         </div>
 
         {/* Desktop embed */}
-        <div className="hidden sm:block relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/50 bg-dark-card"
+        <div className="fx-reveal fx-d-2 hidden sm:block relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/50 bg-dark-card"
           style={{ paddingBottom: '56.25%', height: 0 }}
         >
           <iframe
@@ -38,7 +33,7 @@ export default function AppPreview() {
 
         {/* Mobile */}
         <div className="sm:hidden flex flex-col items-center gap-6 py-8">
-          <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/50 bg-dark-card w-full"
+          <div className="fx-reveal fx-d-2 relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/50 bg-dark-card w-full"
             style={{ paddingBottom: '75%', height: 0 }}
           >
             <iframe

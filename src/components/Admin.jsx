@@ -13,12 +13,7 @@ function DashboardMockup({ isInView }) {
   ]
 
   return (
-    <div
-      className={`transition-all duration-700 ${
-        isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-      }`}
-      style={{ transitionDelay: '200ms' }}
-    >
+    <div className={`fx-reveal fx-d-2 ${isInView ? 'is-visible' : ''}`}>
       <div className="relative max-w-3xl mx-auto">
         <div className="bg-dark-card border border-white/10 rounded-2xl overflow-hidden shadow-2xl shadow-black/50">
           <div className="flex items-center gap-2 px-4 py-3 bg-dark-lighter border-b border-white/5">
@@ -43,7 +38,11 @@ function DashboardMockup({ isInView }) {
 
             <div className="space-y-2">
               {appointments.map((apt, i) => (
-                <div key={i} className={`flex items-center gap-4 p-3 rounded-xl border ${apt.color}`}>
+                <div
+                  key={i}
+                  className={`flex items-center gap-4 p-3 rounded-xl border ${apt.color} fx-reveal ${isInView ? 'is-visible' : ''}`}
+                  style={{ transitionDelay: `${300 + i * 90}ms` }}
+                >
                   <div className="text-sm font-mono text-white/50 w-12">{apt.time}</div>
                   <div className="flex-1">
                     <div className="text-sm font-medium">{apt.name}</div>
@@ -66,12 +65,7 @@ function StatsMockup({ isInView }) {
   const days = ['Po', 'Út', 'St', 'Čt', 'Pá', 'So', 'Ne']
 
   return (
-    <div
-      className={`transition-all duration-700 ${
-        isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-      }`}
-      style={{ transitionDelay: '400ms' }}
-    >
+    <div className={`fx-reveal fx-d-4 ${isInView ? 'is-visible' : ''}`}>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto mt-6">
         <div className="bg-dark-card border border-white/10 rounded-2xl p-5">
           <div className="text-sm text-white/40 mb-1">{t('admin', 'revenue')}</div>
@@ -126,26 +120,17 @@ export default function Admin() {
   return (
     <section id="admin" className="py-24 sm:py-32 px-6">
       <div ref={ref} className="max-w-5xl mx-auto">
-        <div
-          className={`text-center mb-12 transition-all duration-700 ${
-            isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+        <div className="text-center mb-12">
+          <h2 className={`fx-reveal text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 ${isInView ? 'is-visible' : ''}`}>
             {t('admin', 'h1')} <span className="text-gold">{t('admin', 'h2')}</span>
           </h2>
-          <p className="text-white/50 text-lg">{t('admin', 'p')}</p>
+          <p className={`fx-reveal fx-d-1 text-white/50 text-lg ${isInView ? 'is-visible' : ''}`}>{t('admin', 'p')}</p>
         </div>
 
         <DashboardMockup isInView={isInView} />
         <StatsMockup isInView={isInView} />
 
-        <p
-          className={`text-center text-white/40 text-lg mt-8 transition-all duration-700 ${
-            isInView ? 'opacity-100' : 'opacity-0'
-          }`}
-          style={{ transitionDelay: '600ms' }}
-        >
+        <p className={`fx-reveal fx-d-5 text-center text-white/40 text-lg mt-8 ${isInView ? 'is-visible' : ''}`}>
           {t('admin', 'footer')} <span className="text-gold font-semibold">{t('admin', 'footerBold')}</span>
         </p>
       </div>

@@ -1,8 +1,9 @@
-import { useInView } from '../hooks/useInView'
+import { useReveal } from '../hooks/useReveal'
 import { useLanguage } from '../context/LanguageContext'
+import TiltCard from './TiltCard'
 
 export default function Problem() {
-  const [ref, isInView] = useInView()
+  const ref = useReveal()
   const { t } = useLanguage()
 
   const cards = [
@@ -37,36 +38,28 @@ export default function Problem() {
 
   return (
     <section id="problem" className="py-24 sm:py-32 px-6">
-      <div
-        ref={ref}
-        className={`max-w-4xl mx-auto transition-all duration-700 ${
-          isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}
-      >
+      <div ref={ref} className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="fx-reveal text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
             {t('problem', 'h1')}
             <br />
             <span className="text-gold">{t('problem', 'h2')}</span>
           </h2>
-          <p className="text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
+          <p className="fx-reveal fx-d-1 text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
             {t('problem', 'p')}
           </p>
         </div>
 
         <div className="grid sm:grid-cols-3 gap-6">
           {cards.map((item, i) => (
-            <div
+            <TiltCard
               key={i}
-              className={`bg-dark-card border border-white/5 rounded-2xl p-6 transition-all duration-500 hover:border-gold/20 hover:shadow-lg hover:shadow-gold/5 ${
-                isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
-              style={{ transitionDelay: `${(i + 1) * 150}ms` }}
+              className={`fx-reveal fx-d-${i + 2} fx-glow-hover bg-dark-card border border-white/5 rounded-2xl p-6 hover:border-gold/20`}
             >
               <div className="text-gold mb-4">{item.icon}</div>
               <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
               <p className="text-white/50 text-sm leading-relaxed">{item.text}</p>
-            </div>
+            </TiltCard>
           ))}
         </div>
       </div>

@@ -1,14 +1,9 @@
-import { useInView } from '../hooks/useInView'
+import { useReveal } from '../hooks/useReveal'
 import { useLanguage } from '../context/LanguageContext'
 
-function PhoneMockup({ children, delay = 0, isInView }) {
+function PhoneMockup({ children, delayClass = '' }) {
   return (
-    <div
-      className={`transition-all duration-700 ${
-        isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-      }`}
-      style={{ transitionDelay: `${delay}ms` }}
-    >
+    <div className={`fx-reveal ${delayClass}`}>
       <div className="relative mx-auto w-[240px] sm:w-[260px]">
         <div className="relative bg-dark-card border-2 border-white/10 rounded-[2.5rem] p-3 shadow-2xl shadow-black/50">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-6 bg-dark-card rounded-b-2xl z-10 border-b-2 border-x-2 border-white/10" />
@@ -80,7 +75,7 @@ function TimeSlot({ time, selected }) {
 }
 
 export default function ClientExperience() {
-  const [ref, isInView] = useInView()
+  const ref = useReveal()
   const { t } = useLanguage()
 
   return (
@@ -88,19 +83,15 @@ export default function ClientExperience() {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gold/[0.02] to-transparent" />
 
       <div ref={ref} className="relative z-10 max-w-6xl mx-auto">
-        <div
-          className={`text-center mb-16 transition-all duration-700 ${
-            isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+        <div className="text-center mb-16">
+          <h2 className="fx-reveal text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
             {t('client', 'h1')} <span className="text-gold">{t('client', 'h2')}</span>
           </h2>
-          <p className="text-white/50 text-lg">{t('client', 'p')}</p>
+          <p className="fx-reveal fx-d-1 text-white/50 text-lg">{t('client', 'p')}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
-          <PhoneMockup delay={100} isInView={isInView}>
+          <PhoneMockup delayClass="fx-d-2">
             <div className="text-center mb-4">
               <div className="text-xs text-gold font-semibold uppercase tracking-wider mb-1">{t('client', 'step1')}</div>
               <div className="text-base font-semibold">{t('client', 'step1label')}</div>
@@ -111,7 +102,7 @@ export default function ClientExperience() {
             <ServiceItem icon="🧖" name={t('client', 's4')} duration={t('client', 's4d')} price={t('client', 's4p')} selected={false} />
           </PhoneMockup>
 
-          <PhoneMockup delay={300} isInView={isInView}>
+          <PhoneMockup delayClass="fx-d-3">
             <div className="text-center mb-4">
               <div className="text-xs text-gold font-semibold uppercase tracking-wider mb-1">{t('client', 'step2')}</div>
               <div className="text-base font-semibold">{t('client', 'step2label')}</div>
@@ -124,7 +115,7 @@ export default function ClientExperience() {
             </div>
           </PhoneMockup>
 
-          <PhoneMockup delay={500} isInView={isInView}>
+          <PhoneMockup delayClass="fx-d-4">
             <div className="text-center mb-4">
               <div className="text-xs text-gold font-semibold uppercase tracking-wider mb-1">{t('client', 'step3')}</div>
               <div className="text-base font-semibold">{t('client', 'step3label')}</div>
@@ -149,11 +140,7 @@ export default function ClientExperience() {
           </PhoneMockup>
         </div>
 
-        <p
-          className={`text-center text-white/40 text-lg mt-12 transition-all duration-700 delay-500 ${
-            isInView ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
+        <p className="fx-reveal fx-d-5 text-center text-white/40 text-lg mt-12">
           {t('client', 'footer')} <span className="text-gold font-semibold">{t('client', 'footerBold')}</span>{t('client', 'footerEnd')}
         </p>
       </div>
