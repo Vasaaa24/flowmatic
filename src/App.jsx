@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { LanguageProvider } from './context/LanguageContext'
 import { useLenis } from './hooks/useLenis'
 import Intro from './components/Intro'
@@ -19,12 +20,10 @@ import Reviews from './components/Reviews'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
-export default function App() {
+function MainApp() {
   useLenis()
-
   return (
-    <LanguageProvider>
-      <Intro />
+    <>
       <AmbientBackground />
       <CursorSpotlight />
       <ScrollProgress />
@@ -50,6 +49,24 @@ export default function App() {
         <Contact />
         <Footer />
       </div>
+    </>
+  )
+}
+
+export default function App() {
+  const [contentReady, setContentReady] = useState(false)
+
+  // Mount the heavy app tree only after intro finishes, so intro
+  // animations don't compete with React render / canvas RAF / observers.
+  useEffect(() => {
+    const t = setTimeout(() => setContentReady(true), 2400)
+    return () => clearTimeout(t)
+  }, [])
+
+  return (
+    <LanguageProvider>
+      <Intro />
+      {contentReady && <MainApp />}
     </LanguageProvider>
   )
 }
