@@ -20,8 +20,21 @@ import Reviews from './components/Reviews'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
-function MainApp() {
+function MainApp({ onReady }) {
   useLenis()
+
+  // Signal "ready" once mounted + fonts loaded + 2 RAF frames painted.
+  useEffect(() => {
+    let cancelled = false
+    Promise.all([
+      document.fonts?.ready ?? Promise.resolve(),
+      new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))),
+    ]).then(() => {
+      if (!cancelled) onReady?.()
+    })
+    return () => { cancelled = true }
+  }, [onReady])
+
   return (
     <>
       <AmbientBackground />
@@ -54,19 +67,34 @@ function MainApp() {
 }
 
 export default function App() {
-  const [contentReady, setContentReady] = useState(false)
+  // 1) Play intro alone for a minimum window (no competition for CPU)
+  // 2) Mount MainApp behind intro
+  // 3) When MainApp signals ready, fade intro out
+  const [mountMain, setMountMain] = useState(false)
+  const [mainReady, setMainReady] = useState(false)
+  const [dismissIntro, setDismissIntro] = useState(false)
 
-  // Mount the heavy app tree only after intro finishes, so intro
-  // animations don't compete with React render / canvas RAF / observers.
+  // Start mounting the rest of the app after intro's reveal animations finish.
   useEffect(() => {
-    const t = setTimeout(() => setContentReady(true), 2400)
+    const t = setTimeout(() => setMountMain(true), 1700)
+    return () => clearTimeout(t)
+  }, [])
+
+  // Once app is rendered, tell intro to fade out.
+  useEffect(() => {
+    if (mainReady) setDismissIntro(true)
+  }, [mainReady])
+
+  // Safety net: never let intro linger more than 8 s, even if something stalls.
+  useEffect(() => {
+    const t = setTimeout(() => setDismissIntro(true), 8000)
     return () => clearTimeout(t)
   }, [])
 
   return (
     <LanguageProvider>
-      <Intro />
-      {contentReady && <MainApp />}
+      <Intro dismiss={dismissIntro} />
+      {mountMain && <MainApp onReady={() => setMainReady(true)} />}
     </LanguageProvider>
   )
 }

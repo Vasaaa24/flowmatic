@@ -411,6 +411,26 @@ html.intro-lock, html.intro-lock body {
   to { width: clamp(160px, 18vw, 280px); }
 }
 
+/* Subtle loading indicator below underline — pulses while app loads */
+.intro-spinner {
+  position: absolute;
+  bottom: clamp(40px, 5vw, 64px);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255, 193, 7, 0.7);
+  opacity: 0;
+  animation: introSpinnerIn 400ms 1700ms ease forwards,
+             introSpinnerPulse 1100ms 1700ms ease-in-out infinite;
+}
+@keyframes introSpinnerIn {
+  to { opacity: 1; }
+}
+@keyframes introSpinnerPulse {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50%      { transform: scale(2.2); opacity: 1; }
+}
+
 body {
   margin: 0;
   background-color: #121212;
