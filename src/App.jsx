@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { LanguageProvider } from './context/LanguageContext'
 import { useLenis } from './hooks/useLenis'
 import Intro from './components/Intro'
-import CursorSpotlight from './components/CursorSpotlight'
+
 import ScrollProgress from './components/ScrollProgress'
 import FlyThroughDivider from './components/FlyThroughDivider'
 import Navbar from './components/Navbar'
@@ -36,8 +36,7 @@ function MainApp({ onReady }) {
 
   return (
     <>
-      <CursorSpotlight />
-      <ScrollProgress />
+<ScrollProgress />
       <div className="min-h-screen bg-dark text-white overflow-x-hidden">
         <Navbar />
         <Hero />
@@ -74,7 +73,7 @@ export default function App() {
 
   // Start mounting the rest of the app after intro's reveal animations finish.
   useEffect(() => {
-    const t = setTimeout(() => setMountMain(true), 1700)
+    const t = setTimeout(() => setMountMain(true), 1000)
     return () => clearTimeout(t)
   }, [])
 
