@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { LanguageProvider } from './context/LanguageContext'
 import { useLenis } from './hooks/useLenis'
 import Intro from './components/Intro'
-import AmbientBackground from './components/AmbientBackground'
 import CursorSpotlight from './components/CursorSpotlight'
 import ScrollProgress from './components/ScrollProgress'
 import FlyThroughDivider from './components/FlyThroughDivider'
@@ -37,7 +36,6 @@ function MainApp({ onReady }) {
 
   return (
     <>
-      <AmbientBackground />
       <CursorSpotlight />
       <ScrollProgress />
       <div className="min-h-screen bg-dark text-white overflow-x-hidden">
