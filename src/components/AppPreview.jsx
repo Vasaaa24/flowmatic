@@ -30,21 +30,20 @@ export default function AppPreview() {
             allowFullScreen
             allow="fullscreen"
             title="Příklad aplikace Valton"
-            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none', pointerEvents: 'none' }}
+            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
           />
           <a
             href={CANVA_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="group absolute inset-0 flex items-end justify-end p-4"
+            className="absolute bottom-4 right-4 inline-flex items-center gap-2 bg-dark/80 backdrop-blur-md border border-gold/40 text-gold text-sm font-medium px-5 py-2.5 rounded-full hover:bg-gold/10 transition-colors"
             aria-label={t('preview', 'openBtn')}
+            style={{ pointerEvents: 'auto' }}
           >
-            <span className="inline-flex items-center gap-2 bg-dark/80 backdrop-blur-md border border-gold/40 text-gold text-sm font-medium px-5 py-2.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-              </svg>
-              {t('preview', 'openBtn')}
-            </span>
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+            </svg>
+            {t('preview', 'openBtn')}
           </a>
         </div>
 
@@ -58,7 +57,7 @@ export default function AppPreview() {
               allowFullScreen
               allow="fullscreen"
               title="Příklad aplikace Valton"
-              style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none', pointerEvents: 'none' }}
+              style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
             />
           </div>
           <a

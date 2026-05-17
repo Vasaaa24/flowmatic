@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
+import { NavLink, useLocation } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
 
 function LangSwitch() {
   const { lang, setLang } = useLanguage()
-
   return (
     <div className="relative">
       <select
@@ -25,24 +25,24 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const { t } = useLanguage()
+  const location = useLocation()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const links = [
-    { href: '#problem', label: t('nav', 'about') },
-    { href: '#client',  label: t('nav', 'clients') },
-    { href: '#admin',   label: t('nav', 'admin') },
-    { href: '#preview', label: t('nav', 'preview') },
-    { href: '#value',   label: t('nav', 'value') },
-    { href: '#pricing', label: t('nav', 'pricing') },
-    { href: '#websites', label: t('nav', 'websites') },
-    { href: '#design', label: t('nav', 'design') },
-    { href: '#reviews', label: t('nav', 'reviews') },
-    { href: '#contact', label: t('nav', 'contact') },
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMenuOpen(false)
+  }, [location.pathname])
+
+  const pages = [
+    { to: '/',       label: 'Rezervace' },
+    { to: '/weby',   label: 'Weby' },
+    { to: '/design', label: 'Design' },
+    { to: '/cenik',  label: 'Kontakt' },
   ]
 
   return (
@@ -52,7 +52,8 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#hero" className="group flex items-center gap-2 text-2xl font-bold tracking-tight">
+        {/* Logo */}
+        <NavLink to="/" className="group flex items-center gap-2 text-2xl font-bold tracking-tight">
           <svg
             className="w-5 h-5 text-gold transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             viewBox="0 0 20 20"
@@ -61,31 +62,42 @@ export default function Navbar() {
             strokeWidth="2.2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            aria-hidden="true"
           >
             <path d="M6 14 L14 6" />
             <path d="M7 6 L14 6 L14 13" />
           </svg>
           <span><span className="text-gold">VAL</span>TON</span>
-        </a>
+        </NavLink>
 
         {/* Desktop */}
-        <div className="hidden xl:flex items-center gap-5">
-          {links.map((link) => (
-            <a key={link.href} href={link.href}
-              className="text-sm text-white/70 hover:text-gold transition-colors duration-200">
-              {link.label}
-            </a>
+        <div className="hidden md:flex items-center gap-6">
+          {pages.map((p) => (
+            <NavLink
+              key={p.to}
+              to={p.to}
+              end={p.to === '/'}
+              className={({ isActive }) =>
+                `text-sm transition-colors duration-200 ${isActive ? 'text-gold font-semibold' : 'text-white/70 hover:text-gold'}`
+              }
+            >
+              {p.label}
+            </NavLink>
           ))}
           <LangSwitch />
-          <a href="#contact"
-            className="bg-gold text-dark font-semibold text-sm px-5 py-2 rounded-full hover:bg-gold-light transition-colors duration-200">
+          <NavLink
+            to="/cenik"
+            className="bg-gold text-dark font-semibold text-sm px-5 py-2 rounded-full hover:bg-gold-light transition-colors duration-200"
+          >
             {t('nav', 'cta')}
-          </a>
+          </NavLink>
         </div>
 
         {/* Mobile hamburger */}
-        <button className="xl:hidden text-white p-2" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+        <button
+          className="md:hidden text-white p-2"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Menu"
+        >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             {menuOpen ? <path d="M6 6l12 12M6 18L18 6" /> : <path d="M3 6h18M3 12h18M3 18h18" />}
           </svg>
@@ -94,23 +106,27 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="xl:hidden bg-dark-card/95 backdrop-blur-md border-t border-white/10">
+        <div className="md:hidden bg-dark-card/95 backdrop-blur-md border-t border-white/10">
           <div className="px-6 py-4 flex flex-col gap-4">
-            {links.map((link) => (
-              <a key={link.href} href={link.href}
-                className="text-white/70 hover:text-gold transition-colors"
-                onClick={() => setMenuOpen(false)}>
-                {link.label}
-              </a>
+            {pages.map((p) => (
+              <NavLink
+                key={p.to}
+                to={p.to}
+                end={p.to === '/'}
+                className={({ isActive }) =>
+                  `transition-colors text-base ${isActive ? 'text-gold font-semibold' : 'text-white/70 hover:text-gold'}`
+                }
+              >
+                {p.label}
+              </NavLink>
             ))}
-
             <LangSwitch />
-
-            <a href="#contact"
+            <NavLink
+              to="/cenik"
               className="bg-gold text-dark font-semibold text-center px-5 py-2.5 rounded-full"
-              onClick={() => setMenuOpen(false)}>
+            >
               {t('nav', 'cta')}
-            </a>
+            </NavLink>
           </div>
         </div>
       )}

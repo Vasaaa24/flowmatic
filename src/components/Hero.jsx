@@ -1,16 +1,14 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
-import { useScrollProgress } from '../hooks/useScrollProgress'
-import MagneticButton from './MagneticButton'
 import SplitText from './SplitText'
 
 export default function Hero() {
   const { t } = useLanguage()
-  const scrollFxRef = useScrollProgress('out')
+  const ref = useRef(null)
 
-  // Reveal everything on mount — Hero is above the fold.
   useEffect(() => {
-    const el = scrollFxRef.current
+    const el = ref.current
     if (!el) return
     const id = requestAnimationFrame(() => {
       el.querySelectorAll('.fx-reveal').forEach((n) => n.classList.add('is-visible'))
@@ -27,7 +25,7 @@ export default function Hero() {
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gold/5 blur-[80px]" />
       </div>
 
-      <div ref={scrollFxRef} className="hero-scroll-fx relative z-10 max-w-4xl mx-auto px-6 text-center">
+      <div ref={ref} className="relative z-10 max-w-4xl mx-auto px-6 text-center">
         <div className="fx-reveal inline-flex items-center gap-2 bg-gold/10 border border-gold/20 rounded-full px-4 py-1.5 mb-6">
           <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
           <span className="text-gold text-sm font-medium">{t('hero', 'badge')}</span>
@@ -54,13 +52,13 @@ export default function Hero() {
         </p>
 
         <div className="fx-reveal fx-d-3 flex flex-col sm:flex-row gap-4 justify-center">
-          <MagneticButton
-            href="#client"
-            className="group inline-flex items-center justify-center gap-2 bg-gold text-dark font-bold text-lg px-8 py-4 rounded-full hover:bg-gold-light shadow-lg shadow-gold/20"
+          <Link
+            to="/cenik"
+            className="inline-flex items-center justify-center gap-2 bg-gold text-dark font-bold text-lg px-8 py-4 rounded-full hover:bg-gold-light transition-colors shadow-lg shadow-gold/20"
           >
             {t('hero', 'btn')}
             <svg
-              className="w-5 h-5 transition-transform group-hover:translate-y-0.5"
+              className="w-5 h-5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -68,7 +66,7 @@ export default function Hero() {
             >
               <path d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
-          </MagneticButton>
+          </Link>
         </div>
 
         <div className="mt-10 grid grid-cols-3 gap-4 sm:gap-8 max-w-xl mx-auto">

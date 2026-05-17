@@ -1,6 +1,6 @@
+import { Link } from 'react-router-dom'
 import { useReveal } from '../hooks/useReveal'
 import { useLanguage } from '../context/LanguageContext'
-import MagneticButton from './MagneticButton'
 import TiltCard from './TiltCard'
 import SplitText from './SplitText'
 
@@ -61,15 +61,15 @@ export default function Websites() {
           </div>
           <p className="text-xl sm:text-2xl font-semibold mb-3">{t('websites', 'priceText')}</p>
           <p className="text-white/50 text-sm mb-6 max-w-xl mx-auto">{t('websites', 'priceNote')}</p>
-          <MagneticButton
-            href="#contact"
-            className="inline-flex items-center gap-2 bg-gold text-dark font-bold px-8 py-3.5 rounded-full hover:bg-gold-light shadow-lg shadow-gold/20"
+          <Link
+            to="/cenik"
+            className="inline-flex items-center gap-2 bg-gold text-dark font-bold px-8 py-3.5 rounded-full hover:bg-gold-light transition-colors shadow-lg shadow-gold/20"
           >
             {t('websites', 'cta')}
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>
-          </MagneticButton>
+          </Link>
         </div>
       </div>
     </section>

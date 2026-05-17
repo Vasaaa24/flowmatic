@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
 
 export default function Footer() {
@@ -10,9 +11,9 @@ export default function Footer() {
           &copy; {new Date().getFullYear()} <span className="text-gold">VAL</span>TON. {t('footer', 'rights').replace(`© ${new Date().getFullYear()} Valton. `, '')}
         </div>
         <div className="flex items-center gap-6">
-          <a href="#hero" className="text-sm text-white/30 hover:text-gold transition-colors">
+          <Link to="/" className="text-sm text-white/30 hover:text-gold transition-colors">
             {t('footer', 'up')}
-          </a>
+          </Link>
           <a href="mailto:valton.reserv@gmail.com" className="text-sm text-white/30 hover:text-gold transition-colors">
             valton.reserv@gmail.com
           </a>

@@ -1,6 +1,6 @@
+import { Link } from 'react-router-dom'
 import { useReveal } from '../hooks/useReveal'
 import { useLanguage } from '../context/LanguageContext'
-import MagneticButton from './MagneticButton'
 import TiltCard from './TiltCard'
 import SplitText from './SplitText'
 
@@ -8,35 +8,12 @@ import SplitText from './SplitText'
 
 function LogoPreview() {
   return (
-    <div className="relative flex-1 min-h-[280px] rounded-xl bg-gradient-to-br from-gold/15 via-dark-card to-dark flex items-center justify-center overflow-hidden border border-gold/10">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,193,7,0.22),transparent_60%)]" />
-
-      {/* Decorative corner marks */}
-      <div className="absolute top-3 left-3 w-4 h-4 border-l-2 border-t-2 border-gold/40" />
-      <div className="absolute top-3 right-3 w-4 h-4 border-r-2 border-t-2 border-gold/40" />
-      <div className="absolute bottom-3 left-3 w-4 h-4 border-l-2 border-b-2 border-gold/40" />
-      <div className="absolute bottom-3 right-3 w-4 h-4 border-r-2 border-b-2 border-gold/40" />
-
-      <div className="absolute top-4 left-1/2 -translate-x-1/2 text-[10px] font-mono text-gold/50 tracking-[0.3em] uppercase">
-        Brand mark
-      </div>
-
-      <div className="relative">
-        <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center shadow-2xl shadow-gold/40">
-          <span className="text-5xl sm:text-6xl font-black text-dark tracking-tighter">V</span>
-        </div>
-        <div className="absolute -inset-4 rounded-full border border-gold/30 animate-[pulse_3s_ease-in-out_infinite]" />
-        <div className="absolute -inset-8 rounded-full border border-gold/15" />
-        <div className="absolute -inset-12 rounded-full border border-gold/8" />
-      </div>
-
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-3 text-[10px] font-mono text-white/30">
-        <span>1:1</span>
-        <span className="w-1 h-1 rounded-full bg-gold/40" />
-        <span>SVG</span>
-        <span className="w-1 h-1 rounded-full bg-gold/40" />
-        <span>PNG</span>
-      </div>
+    <div className="flex-1 min-h-[260px] rounded-xl overflow-hidden border border-white/8">
+      <img
+        src="/logo-preview.png"
+        alt="Valton logo preview"
+        className="w-full h-full object-cover"
+      />
     </div>
   )
 }
@@ -151,15 +128,15 @@ export default function Design() {
             </div>
             <p className="text-xl sm:text-2xl font-semibold mb-3">{t('design', 'priceText')}</p>
             <p className="text-white/50 text-sm mb-6 max-w-xl mx-auto">{t('design', 'priceNote')}</p>
-            <MagneticButton
-              href="#contact"
-              className="inline-flex items-center gap-2 bg-gold text-dark font-bold px-8 py-3.5 rounded-full hover:bg-gold-light shadow-lg shadow-gold/20"
+            <Link
+              to="/cenik"
+              className="inline-flex items-center gap-2 bg-gold text-dark font-bold px-8 py-3.5 rounded-full hover:bg-gold-light transition-colors shadow-lg shadow-gold/20"
             >
               {t('design', 'cta')}
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
-            </MagneticButton>
+            </Link>
           </div>
         </div>
       </div>
