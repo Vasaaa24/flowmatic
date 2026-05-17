@@ -34,17 +34,8 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
 .lenis.lenis-stopped { overflow: clip; }
 
-/* ─── Action-movie reveal: fade-up ─── */
-.fx-reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
-              transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-.fx-reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* fx-reveal — no animation, visible immediately */
+.fx-reveal { opacity: 1; transform: none; }
 
 /* Stagger delays (combine with .fx-reveal) */
 .fx-d-1 { transition-delay: 80ms; }
@@ -350,14 +341,10 @@ section, footer { position: relative; z-index: 2; }
   will-change: transform;
 }
 
-/* ─────────────────────────────────────────────
-   INTRO — minimal wordmark
-   ───────────────────────────────────────────── */
-html.intro-lock, html.intro-lock body {
-  overflow: hidden !important;
-  height: 100vh;
-}
+html { scroll-behavior: smooth; }
 
+
+/* ─── Intro ─── */
 .intro-root {
   position: fixed;
   inset: 0;
@@ -367,20 +354,16 @@ html.intro-lock, html.intro-lock body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  pointer-events: all;
+  pointer-events: none;
   transition: opacity 700ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.intro-root.intro-out {
-  opacity: 0;
-  pointer-events: none;
-}
+.intro-root.intro-out { opacity: 0; }
 
 .intro-mark {
   display: flex;
   align-items: center;
   gap: clamp(10px, 1.4vw, 20px);
 }
-
 .intro-arrow {
   width: clamp(2.4rem, 5vw, 4rem);
   height: clamp(2.4rem, 5vw, 4rem);
@@ -389,9 +372,7 @@ html.intro-lock, html.intro-lock body {
   transform: translate(-6px, 6px);
   animation: introArrowIn 600ms 150ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
-@keyframes introArrowIn {
-  to { opacity: 1; transform: translate(0, 0); }
-}
+@keyframes introArrowIn { to { opacity: 1; transform: translate(0, 0); } }
 
 .intro-wordmark {
   display: flex;
@@ -401,7 +382,6 @@ html.intro-lock, html.intro-lock body {
   letter-spacing: -0.04em;
   line-height: 1;
 }
-
 .intro-letter {
   display: inline-block;
   opacity: 0;
@@ -409,12 +389,8 @@ html.intro-lock, html.intro-lock body {
   color: #ffffff;
   animation: introLetterIn 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
-.intro-letter-gold {
-  color: #FFC107;
-}
-@keyframes introLetterIn {
-  to { opacity: 1; transform: translateY(0); }
-}
+.intro-letter-gold { color: #FFC107; }
+@keyframes introLetterIn { to { opacity: 1; transform: translateY(0); } }
 
 .intro-underline {
   margin-top: clamp(18px, 2vw, 28px);
@@ -423,29 +399,7 @@ html.intro-lock, html.intro-lock body {
   background: #FFC107;
   animation: introUnderlineDraw 600ms 950ms cubic-bezier(0.77, 0, 0.175, 1) forwards;
 }
-@keyframes introUnderlineDraw {
-  to { width: clamp(160px, 18vw, 280px); }
-}
-
-/* Subtle loading indicator below underline — pulses while app loads */
-.intro-spinner {
-  position: absolute;
-  bottom: clamp(40px, 5vw, 64px);
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: rgba(255, 193, 7, 0.7);
-  opacity: 0;
-  animation: introSpinnerIn 400ms 950ms ease forwards,
-             introSpinnerPulse 1100ms 950ms ease-in-out infinite;
-}
-@keyframes introSpinnerIn {
-  to { opacity: 1; }
-}
-@keyframes introSpinnerPulse {
-  0%, 100% { transform: scale(1); opacity: 0.4; }
-  50%      { transform: scale(2.2); opacity: 1; }
-}
+@keyframes introUnderlineDraw { to { width: clamp(160px, 18vw, 280px); } }
 
 body {
   margin: 0;

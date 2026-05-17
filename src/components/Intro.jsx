@@ -7,19 +7,10 @@ import { useEffect, useState } from 'react'
 export default function Intro({ dismiss = false }) {
   const [visible, setVisible] = useState(true)
 
-  // Lock body scroll while intro is visible.
-  useEffect(() => {
-    document.documentElement.classList.add('intro-lock')
-    return () => document.documentElement.classList.remove('intro-lock')
-  }, [])
-
   // Fade out + unmount when parent says we're done.
   useEffect(() => {
     if (!dismiss) return
-    const t = setTimeout(() => {
-      document.documentElement.classList.remove('intro-lock')
-      setVisible(false)
-    }, 700)
+    const t = setTimeout(() => setVisible(false), 700)
     return () => clearTimeout(t)
   }, [dismiss])
 
