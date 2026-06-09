@@ -39,17 +39,10 @@ export default function Pricing() {
                 <div className="text-xs text-white/40 mt-1">{t('pricing', 'month0note')}</div>
               </div>
               <div className="fx-reveal fx-d-4 sm:px-6 sm:flex-1">
-                <div className="text-xs text-white/50 font-semibold uppercase tracking-wider mb-2">{t('pricing', 'month1')}</div>
+                <div className="text-xs text-white/50 font-semibold uppercase tracking-wider mb-2">{t('pricing', 'monthReg')}</div>
                 <div className="flex items-baseline justify-center gap-1">
                   <span className="text-5xl font-bold text-white">999</span>
                   <span className="text-lg text-white/50">Kč</span>
-                </div>
-              </div>
-              <div className="fx-reveal fx-d-5 sm:px-6 sm:flex-1">
-                <div className="text-xs text-white/40 font-semibold uppercase tracking-wider mb-2">{t('pricing', 'monthReg')}</div>
-                <div className="flex items-baseline justify-center gap-1">
-                  <span className="text-5xl font-bold text-white/60">1 500</span>
-                  <span className="text-lg text-white/30">Kč</span>
                 </div>
               </div>
             </div>

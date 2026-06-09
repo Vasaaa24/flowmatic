@@ -4,10 +4,13 @@ import { LanguageProvider } from './context/LanguageContext'
 import Intro from './components/Intro'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import CookieBanner from './components/CookieBanner'
 import HomePage from './pages/HomePage'
 import WebsitesPage from './pages/WebsitesPage'
 import DesignPage from './pages/DesignPage'
 import PricingPage from './pages/PricingPage'
+import GdprPage from './pages/GdprPage'
+import CookiesPage from './pages/CookiesPage'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -26,6 +29,8 @@ function Layout() {
         <Route path="/weby" element={<WebsitesPage />} />
         <Route path="/design" element={<DesignPage />} />
         <Route path="/cenik" element={<PricingPage />} />
+        <Route path="/gdpr" element={<GdprPage />} />
+        <Route path="/cookies" element={<CookiesPage />} />
       </Routes>
       <Footer />
     </div>
@@ -46,6 +51,7 @@ export default function App() {
         <ScrollToTop />
         <Intro dismiss={dismiss} />
         <Layout />
+        <CookieBanner />
       </BrowserRouter>
     </LanguageProvider>
   )
