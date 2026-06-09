@@ -53,20 +53,8 @@ export default function Navbar() {
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <NavLink to="/" className="group flex items-center gap-2 text-2xl font-bold tracking-tight">
-          <svg
-            className="w-5 h-5 text-gold transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            viewBox="0 0 20 20"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M6 14 L14 6" />
-            <path d="M7 6 L14 6 L14 13" />
-          </svg>
-          <span><span className="text-gold">VAL</span>TON</span>
+        <NavLink to="/" className="text-xl font-bold tracking-tight hover:opacity-80 transition-opacity">
+          <span className="text-gold">Val</span>ton
         </NavLink>
 
         {/* Desktop */}

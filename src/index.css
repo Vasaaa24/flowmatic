@@ -364,6 +364,12 @@ html { scroll-behavior: smooth; }
   align-items: center;
   gap: clamp(10px, 1.4vw, 20px);
 }
+.intro-logo {
+  height: clamp(3rem, 6vw, 5rem);
+  width: auto;
+  opacity: 0;
+  animation: introLetterIn 500ms 300ms ease forwards;
+}
 .intro-arrow {
   width: clamp(2.4rem, 5vw, 4rem);
   height: clamp(2.4rem, 5vw, 4rem);
