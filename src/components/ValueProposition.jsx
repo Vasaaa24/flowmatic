@@ -35,21 +35,21 @@ export default function ValueProposition() {
 
       <div ref={ref} className="relative z-10 max-w-5xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-4">
             <SplitText>{t('value', 'h1')}</SplitText>
             <br />
             <SplitText delay={200}><span className="text-gold">{t('value', 'h2')}</span></SplitText>
           </h2>
-          <p className="fx-reveal fx-d-1 text-white/50 text-lg">{t('value', 'p')}</p>
+          <p className="fx-reveal fx-d-1 text-white/50 text-sm sm:text-lg">{t('value', 'p')}</p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, i) => (
             <TiltCard
               key={i}
-              className={`fx-reveal fx-d-${i + 2} fx-glow-hover group bg-dark-card border border-white/5 rounded-2xl p-6 text-center hover:border-gold/20`}
+              className={`fx-reveal fx-d-${i + 2} fx-glow-hover group bg-dark-card border border-white/5 rounded-2xl p-4 sm:p-6 text-center hover:border-gold/20`}
             >
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gold/10 text-gold mb-4 group-hover:bg-gold/20 transition-colors">
+              <div className="inline-flex items-center justify-center w-11 h-11 sm:w-14 sm:h-14 rounded-2xl bg-gold/10 text-gold mb-4 group-hover:bg-gold/20 transition-colors">
                 {feature.icon}
               </div>
               <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>

@@ -41,12 +41,12 @@ export default function Problem() {
     <section id="problem" className="py-24 sm:py-32 px-6">
       <div ref={ref} className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
             <SplitText>{t('problem', 'h1')}</SplitText>
             <br />
             <SplitText delay={200}><span className="text-gold">{t('problem', 'h2')}</span></SplitText>
           </h2>
-          <p className="fx-reveal fx-d-1 text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
+          <p className="fx-reveal fx-d-1 text-sm sm:text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
             {t('problem', 'p')}
           </p>
         </div>
@@ -55,7 +55,7 @@ export default function Problem() {
           {cards.map((item, i) => (
             <TiltCard
               key={i}
-              className={`fx-reveal fx-d-${i + 2} fx-glow-hover bg-dark-card border border-white/5 rounded-2xl p-6 hover:border-gold/20`}
+              className={`fx-reveal fx-d-${i + 2} fx-glow-hover bg-dark-card border border-white/5 rounded-2xl p-4 sm:p-6 hover:border-gold/20`}
             >
               <div className="text-gold mb-4">{item.icon}</div>
               <h3 className="text-lg font-semibold mb-2">{item.title}</h3>

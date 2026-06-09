@@ -4,10 +4,14 @@ import { useEffect, useRef } from 'react'
  * Ambient background canvas — slowly drifting gold particles + animated mesh.
  * Reacts to scroll: particles drift faster during scrolling.
  */
+const isMobile = () => window.innerWidth < 768
+
 export default function AmbientBackground() {
   const canvasRef = useRef(null)
 
   useEffect(() => {
+    if (isMobile()) return
+
     const canvas = canvasRef.current
     if (!canvas) return
     const ctx = canvas.getContext('2d', { alpha: true })
@@ -63,7 +67,7 @@ export default function AmbientBackground() {
 
         const bob = Math.sin(p.phase) * 0.3 + 0.7
         const alpha = p.a * bob
-        ctx.fillStyle = `rgba(255, 193, 7, ${alpha.toFixed(2)})`
+        ctx.fillStyle = `rgba(255, 230, 0, ${alpha.toFixed(2)})`
         ctx.fillRect(p.x - p.r, p.y - p.r, p.r * 2, p.r * 2)
       }
 

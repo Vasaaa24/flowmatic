@@ -1,8 +1,13 @@
 import { useEffect } from 'react'
 import Lenis from 'lenis'
 
+const isTouchDevice = () =>
+  window.matchMedia('(hover: none)').matches || window.innerWidth < 768
+
 export function useLenis() {
   useEffect(() => {
+    if (isTouchDevice()) return
+
     const lenis = new Lenis({
       duration: 0.9,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

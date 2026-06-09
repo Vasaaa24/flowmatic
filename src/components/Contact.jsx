@@ -105,11 +105,11 @@ export default function Contact() {
     <section id="contact" className="py-24 sm:py-32 px-6">
       <div ref={ref} className="max-w-2xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold mb-4">
             <SplitText>{t('contact', 'h1')}{' '}</SplitText>
             <SplitText delay={200}><span className="text-gold">{t('contact', 'h2')}</span></SplitText>
           </h2>
-          <p className="fx-reveal fx-d-1 text-lg text-white/60 max-w-xl mx-auto leading-relaxed">
+          <p className="fx-reveal fx-d-1 text-sm sm:text-lg text-white/60 max-w-xl mx-auto leading-relaxed">
             {t('contact', 'p')}
           </p>
         </div>
@@ -128,7 +128,7 @@ export default function Contact() {
             </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} noValidate className="fx-reveal fx-d-2 fx-trace-border bg-dark-card border border-white/5 rounded-3xl p-8 sm:p-10 space-y-5">
+          <form onSubmit={handleSubmit} noValidate className="fx-reveal fx-d-2 fx-trace-border bg-dark-card border border-white/5 rounded-3xl p-5 sm:p-10 space-y-4 sm:space-y-5">
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
                 <label className="block text-sm text-white/50 mb-2">{t('contact', 'labelName')} *</label>

@@ -11,6 +11,7 @@ export function useParallax(speed = 0.3) {
   useEffect(() => {
     const el = ref.current
     if (!el) return
+    if (window.innerWidth < 768) return
 
     let raf = 0
     let inView = false

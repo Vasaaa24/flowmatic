@@ -19,10 +19,10 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-[100dvh] flex items-center justify-center pt-24 pb-16"
+      className="relative min-h-[100dvh] flex items-center justify-center pt-20 sm:pt-24 pb-10 sm:pb-16"
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gold/5 blur-[80px]" />
+        <div className="hidden sm:block absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gold/5 blur-[80px]" />
       </div>
 
       <div ref={ref} className="relative z-10 max-w-4xl mx-auto px-6 text-center">
@@ -31,7 +31,7 @@ export default function Hero() {
           <span className="text-gold text-sm font-medium">{t('hero', 'badge')}</span>
         </div>
 
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-5 tracking-tight">
+        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-4 sm:mb-5 tracking-tight">
           <SplitText stagger={26}>
             {t('hero', 'h1a')}{' '}
           </SplitText>
@@ -54,7 +54,7 @@ export default function Hero() {
         <div className="fx-reveal fx-d-3 flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             to="/cenik"
-            className="inline-flex items-center justify-center gap-2 bg-gold text-dark font-bold text-lg px-8 py-4 rounded-full hover:bg-gold-light transition-colors shadow-lg shadow-gold/20"
+            className="inline-flex items-center justify-center gap-2 bg-gold text-dark font-bold text-base sm:text-lg px-6 sm:px-8 py-3.5 sm:py-4 rounded-full hover:bg-gold-light transition-colors shadow-lg shadow-gold/20"
           >
             {t('hero', 'btn')}
             <svg
@@ -76,7 +76,7 @@ export default function Hero() {
             { value: t('hero', 'stat3val'), label: t('hero', 'stat3') },
           ].map((stat, i) => (
             <div key={stat.label} className={`fx-reveal fx-d-${4 + i}`}>
-              <div className="text-xl sm:text-3xl font-bold text-gold whitespace-nowrap">{stat.value}</div>
+              <div className="text-lg sm:text-3xl font-bold text-gold whitespace-nowrap">{stat.value}</div>
               <div className="text-xs sm:text-sm text-white/50 mt-1">{stat.label}</div>
             </div>
           ))}

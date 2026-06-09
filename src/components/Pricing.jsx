@@ -24,7 +24,7 @@ export default function Pricing() {
           <p className="fx-reveal fx-d-1 text-white/50 text-lg">{t('pricing', 'p')}</p>
         </div>
 
-        <div className="fx-reveal fx-d-2 fx-trace-border relative bg-dark-card border border-white/5 rounded-3xl p-8 sm:p-10">
+        <div className="fx-reveal fx-d-2 fx-trace-border relative bg-dark-card border border-white/5 rounded-3xl p-6 sm:p-10">
           <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-dark text-sm font-bold px-5 py-1.5 rounded-full whitespace-nowrap">
             {t('pricing', 'badge')}
           </div>
@@ -34,14 +34,14 @@ export default function Pricing() {
               <div className="fx-reveal fx-d-3 sm:px-6 sm:flex-1">
                 <div className="text-xs text-gold font-semibold uppercase tracking-wider mb-2">{t('pricing', 'month0')}</div>
                 <div className="flex items-baseline justify-center gap-1">
-                  <span className="text-5xl font-bold text-gold">{t('pricing', 'month0val')}</span>
+                  <span className="text-4xl sm:text-5xl font-bold text-gold">{t('pricing', 'month0val')}</span>
                 </div>
                 <div className="text-xs text-white/40 mt-1">{t('pricing', 'month0note')}</div>
               </div>
               <div className="fx-reveal fx-d-4 sm:px-6 sm:flex-1">
                 <div className="text-xs text-white/50 font-semibold uppercase tracking-wider mb-2">{t('pricing', 'monthReg')}</div>
                 <div className="flex items-baseline justify-center gap-1">
-                  <span className="text-5xl font-bold text-white">999</span>
+                  <span className="text-4xl sm:text-5xl font-bold text-white">999</span>
                   <span className="text-lg text-white/50">Kč</span>
                 </div>
               </div>
@@ -66,7 +66,7 @@ export default function Pricing() {
               href="https://wa.me/420776282628?text=Mám%20zájem%20o%20demo%20Valton"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-gold text-dark font-bold text-lg px-10 py-4 rounded-full hover:bg-gold-light shadow-lg shadow-gold/20"
+              className="inline-flex items-center gap-2 bg-gold text-dark font-bold text-base sm:text-lg px-7 sm:px-10 py-3.5 sm:py-4 rounded-full hover:bg-gold-light shadow-lg shadow-gold/20"
             >
               {t('pricing', 'cta')}
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
