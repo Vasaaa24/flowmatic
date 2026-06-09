@@ -354,58 +354,47 @@ html { scroll-behavior: smooth; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: clamp(2rem, 5vh, 3.5rem);
   pointer-events: none;
-  transition: opacity 700ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 500ms ease;
+  will-change: opacity;
 }
-.intro-root.intro-out { opacity: 0; }
-
-.intro-mark {
-  display: flex;
-  align-items: center;
-  gap: clamp(10px, 1.4vw, 20px);
+.intro-logo-wrap {
+  background: #0a0a0a;
 }
 .intro-logo {
-  height: clamp(3rem, 6vw, 5rem);
+  height: clamp(2.5rem, 8vw, 4.5rem);
   width: auto;
+  display: block;
   opacity: 0;
-  animation: introLetterIn 500ms 300ms ease forwards;
+  animation: introFadeIn 600ms 200ms ease forwards;
 }
-.intro-arrow {
-  width: clamp(2.4rem, 5vw, 4rem);
-  height: clamp(2.4rem, 5vw, 4rem);
-  color: #FFE600;
-  opacity: 0;
-  transform: translate(-6px, 6px);
-  animation: introArrowIn 600ms 150ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-@keyframes introArrowIn { to { opacity: 1; transform: translate(0, 0); } }
+@keyframes introFadeIn { to { opacity: 1; } }
+.intro-root.intro-out { opacity: 0; }
 
-.intro-wordmark {
-  display: flex;
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: clamp(2.6rem, 8vw, 5.5rem);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 1;
-}
-.intro-letter {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(0.35em);
-  color: #ffffff;
-  animation: introLetterIn 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-.intro-letter-gold { color: #FFE600; }
-@keyframes introLetterIn { to { opacity: 1; transform: translateY(0); } }
-
-.intro-underline {
-  margin-top: clamp(18px, 2vw, 28px);
+.intro-bar {
+  width: clamp(160px, 40vw, 320px);
   height: 2px;
-  width: 0;
-  background: #FFE600;
-  animation: introUnderlineDraw 600ms 950ms cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  background: #333;
+  border-radius: 2px;
+  overflow: hidden;
 }
-@keyframes introUnderlineDraw { to { width: clamp(160px, 18vw, 280px); } }
+.intro-bar::after {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: #FFE600;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: introBarFill 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  will-change: transform;
+}
+@keyframes introBarFill {
+  0%   { transform: scaleX(0); }
+  80%  { transform: scaleX(0.95); }
+  100% { transform: scaleX(1); }
+}
 
 body {
   margin: 0;
