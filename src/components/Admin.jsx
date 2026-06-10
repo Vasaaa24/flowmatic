@@ -41,7 +41,7 @@ function DashboardMockup({ isInView }) {
                 <div
                   key={i}
                   className={`flex items-center gap-4 p-3 rounded-xl border ${apt.color} fx-reveal ${isInView ? 'is-visible' : ''}`}
-                  style={{ transitionDelay: `${300 + i * 90}ms` }}
+                  style={{ animationDelay: `${300 + i * 90}ms` }}
                 >
                   <div className="text-sm font-mono text-white/50 w-12">{apt.time}</div>
                   <div className="flex-1">
@@ -122,7 +122,7 @@ export default function Admin() {
       <div ref={ref} className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
           <h2 className={`fx-reveal text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 ${isInView ? 'is-visible' : ''}`}>
-            {t('admin', 'h1')} <span className="text-gold">{t('admin', 'h2')}</span>
+            {t('admin', 'h1')} <span className="text-grad-gold">{t('admin', 'h2')}</span>
           </h2>
           <p className={`fx-reveal fx-d-1 text-white/50 text-lg ${isInView ? 'is-visible' : ''}`}>{t('admin', 'p')}</p>
         </div>

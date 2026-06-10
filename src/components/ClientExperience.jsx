@@ -202,27 +202,25 @@ export default function ClientExperience() {
       <div ref={ref} className="relative z-10 max-w-6xl mx-auto">
         <div className="text-center mb-10">
           <h2 className="fx-reveal text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            {t('client', 'h1')} <span className="text-gold">{t('client', 'h2')}</span>
+            {t('client', 'h1')} <span className="text-grad-gold">{t('client', 'h2')}</span>
           </h2>
           <p className="fx-reveal fx-d-1 text-white/50 text-lg">{t('client', 'p')}</p>
         </div>
 
         {/* Business type switcher */}
-        <div className="fx-reveal fx-d-2 flex flex-wrap justify-center gap-2 mb-12">
+        <div className="fx-reveal fx-d-2 grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-2 mb-12 max-w-sm sm:max-w-none mx-auto">
           {bizList.map((biz, i) => (
             <button
               key={biz.id}
               onClick={() => setActiveIdx(i)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+              className={`${i === bizList.length - 1 ? 'col-span-2 sm:col-span-1' : ''} flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl sm:rounded-full text-sm font-medium border transition-all duration-200 ${
                 i === activeIdx
-                  ? 'bg-gold text-dark shadow-lg shadow-gold/20'
-                  : 'bg-white/5 border border-white/10 text-white/60 hover:text-white hover:border-white/20'
+                  ? 'bg-gold border-gold text-dark shadow-lg shadow-gold/20'
+                  : 'bg-white/5 border-white/10 text-white/60 hover:text-white hover:border-white/20'
               }`}
             >
-              <span className="flex items-center gap-1.5">
-                {BIZ_ICONS[biz.id]}
-                {biz.label}
-              </span>
+              {BIZ_ICONS[biz.id]}
+              {biz.label}
             </button>
           ))}
         </div>
@@ -234,7 +232,7 @@ export default function ClientExperience() {
             return (
               <div
                 key={`${activeBiz.id}-${i}`}
-                className="relative bg-dark-card border border-white/5 rounded-3xl p-7 hover:border-gold/20 transition-colors duration-300 group"
+                className="card relative rounded-3xl p-7 group"
               >
                 <div className="flex items-center justify-between mb-6">
                   <span className="text-4xl font-black text-gold/20 leading-none select-none">{step.number}</span>
@@ -274,7 +272,7 @@ export default function ClientExperience() {
 
         {/* AI assistant banner */}
         <div className="fx-reveal fx-d-5 mt-6 relative overflow-hidden bg-dark-card border border-gold/20 rounded-3xl p-7 sm:p-8">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_left,rgba(255,193,7,0.07),transparent_60%)] pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_left,rgba(255,230,0,0.07),transparent_60%)] pointer-events-none" />
           <div className="relative flex flex-col sm:flex-row items-start sm:items-center gap-6">
             {/* Icon */}
             <div className="shrink-0 w-14 h-14 rounded-2xl bg-gold/15 border border-gold/30 flex items-center justify-center text-gold">

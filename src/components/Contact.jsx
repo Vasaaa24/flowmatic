@@ -128,7 +128,7 @@ export default function Contact() {
             </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} noValidate className="fx-reveal fx-d-2 fx-trace-border bg-dark-card border border-white/5 rounded-3xl p-5 sm:p-10 space-y-4 sm:space-y-5">
+          <form onSubmit={handleSubmit} noValidate className="fx-reveal fx-d-2 fx-trace-border card rounded-3xl p-5 sm:p-10 space-y-4 sm:space-y-5">
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
                 <label className="block text-sm text-white/50 mb-2">{t('contact', 'labelName')} *</label>
@@ -200,7 +200,7 @@ export default function Contact() {
             {status === 'error' && <p className="text-red-400 text-sm">{t('contact', 'errSend')}</p>}
 
             <button type="submit" disabled={status === 'sending'}
-              className="fx-magnetic w-full bg-gold text-dark font-bold text-base py-4 rounded-full hover:bg-gold-light disabled:opacity-60 disabled:cursor-not-allowed shadow-lg shadow-gold/20">
+              className="btn-gold w-full font-bold text-base py-4 rounded-full disabled:opacity-60 disabled:cursor-not-allowed">
               {status === 'sending' ? t('contact', 'submitting') : t('contact', 'submitBtn')}
             </button>
 

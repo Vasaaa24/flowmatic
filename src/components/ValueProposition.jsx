@@ -47,7 +47,7 @@ export default function ValueProposition() {
           {features.map((feature, i) => (
             <TiltCard
               key={i}
-              className={`fx-reveal fx-d-${i + 2} fx-glow-hover group bg-dark-card border border-white/5 rounded-2xl p-4 sm:p-6 text-center hover:border-gold/20`}
+              className={`fx-reveal fx-d-${i + 2} card group rounded-2xl p-4 sm:p-6 text-center`}
             >
               <div className="inline-flex items-center justify-center w-11 h-11 sm:w-14 sm:h-14 rounded-2xl bg-gold/10 text-gold mb-4 group-hover:bg-gold/20 transition-colors">
                 {feature.icon}

@@ -19,7 +19,7 @@ function LogoPreview() {
 }
 
 function BrandPreview() {
-  const swatches = ['#FFC107', '#0d0d0d', '#ffffff', '#7a6e4a']
+  const swatches = ['#FFE600', '#0d0d0d', '#ffffff', '#7a6e4a']
   return (
     <div className="relative h-24 sm:h-28 rounded-xl bg-dark p-3 flex flex-col justify-between overflow-hidden border border-white/5">
       <div className="flex gap-1.5">
@@ -72,7 +72,7 @@ export default function Design() {
 
   return (
     <section id="design" className="py-24 sm:py-32 px-6 relative">
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 hidden sm:block">
         <div className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full bg-gold/[0.04] blur-[120px]" />
         <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-gold/[0.03] blur-[100px]" />
       </div>
@@ -95,7 +95,7 @@ export default function Design() {
 
         {/* Asymmetric grid: hero logo card (3) + stacked column (2) */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-12">
-          <TiltCard className="fx-reveal fx-d-2 fx-glow-hover group lg:col-span-3 lg:row-span-2 bg-dark-card border border-white/5 rounded-3xl p-6 sm:p-8 hover:border-gold/20 flex flex-col">
+          <TiltCard className="fx-reveal fx-d-2 card group lg:col-span-3 lg:row-span-2 rounded-3xl p-6 sm:p-8 flex flex-col">
             <LogoPreview />
             <div className="mt-6">
               <h3 className="text-xl sm:text-2xl font-bold mb-2">{t('design', 'f1title')}</h3>
@@ -103,7 +103,7 @@ export default function Design() {
             </div>
           </TiltCard>
 
-          <TiltCard className="fx-reveal fx-d-3 fx-glow-hover group lg:col-span-2 bg-dark-card border border-white/5 rounded-3xl p-6 hover:border-gold/20">
+          <TiltCard className="fx-reveal fx-d-3 card group lg:col-span-2 rounded-3xl p-6">
             <BrandPreview />
             <div className="mt-4">
               <h3 className="text-lg font-semibold mb-1">{t('design', 'f2title')}</h3>
@@ -111,7 +111,7 @@ export default function Design() {
             </div>
           </TiltCard>
 
-          <TiltCard className="fx-reveal fx-d-4 fx-glow-hover group lg:col-span-2 bg-dark-card border border-white/5 rounded-3xl p-6 hover:border-gold/20">
+          <TiltCard className="fx-reveal fx-d-4 card group lg:col-span-2 rounded-3xl p-6">
             <GraphicPreview />
             <div className="mt-4">
               <h3 className="text-lg font-semibold mb-1">{t('design', 'f3title')}</h3>
@@ -121,7 +121,7 @@ export default function Design() {
         </div>
 
         <div className="fx-reveal fx-d-5 fx-trace-border relative overflow-hidden bg-dark-card border border-white/5 rounded-3xl p-8 sm:p-10 text-center">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,193,7,0.06),transparent_70%)] pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,230,0,0.06),transparent_70%)] pointer-events-none" />
           <div className="relative">
             <div className="text-xs text-gold font-semibold uppercase tracking-wider mb-3">
               {t('design', 'priceLabel')}
@@ -130,7 +130,7 @@ export default function Design() {
             <p className="text-white/50 text-sm mb-6 max-w-xl mx-auto">{t('design', 'priceNote')}</p>
             <Link
               to="/cenik"
-              className="inline-flex items-center gap-2 bg-gold text-dark font-bold px-8 py-3.5 rounded-full hover:bg-gold-light transition-colors shadow-lg shadow-gold/20"
+              className="btn-gold inline-flex items-center gap-2 font-bold px-8 py-3.5 rounded-full"
             >
               {t('design', 'cta')}
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

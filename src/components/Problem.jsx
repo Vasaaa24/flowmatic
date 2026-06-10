@@ -55,7 +55,7 @@ export default function Problem() {
           {cards.map((item, i) => (
             <TiltCard
               key={i}
-              className={`fx-reveal fx-d-${i + 2} fx-glow-hover bg-dark-card border border-white/5 rounded-2xl p-4 sm:p-6 hover:border-gold/20`}
+              className={`fx-reveal fx-d-${i + 2} card rounded-2xl p-4 sm:p-6`}
             >
               <div className="text-gold mb-4">{item.icon}</div>
               <h3 className="text-lg font-semibold mb-2">{item.title}</h3>

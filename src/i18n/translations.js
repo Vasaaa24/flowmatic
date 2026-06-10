@@ -78,6 +78,15 @@ export const translations = {
       p: 'Prohlédněte si šablonu aplikace, kterou přizpůsobíme vašemu byznysu.',
       openBtn: 'Otevřít v plné velikosti',
     },
+    demo: {
+      h1: 'Vyzkoušejte si',
+      h2: 'rezervaci naživo.',
+      p: 'Ukázkový barbershop běžící na Valton. Vyberte si službu, specialistu a termín — přesně takhle to uvidí vaši klienti.',
+      openBtn: 'Vyzkoušet demo',
+      note: 'Demo se otevře na valton.cloud',
+      template: 'Jedná se o šablonu procesu rezervace. Chcete vidět i administraci a další funkce?',
+      contactLink: 'Kontaktujte nás',
+    },
     value: {
       h1: 'Jeden systém.',
       h2: 'Neomezené možnosti.',
@@ -257,6 +266,15 @@ export const translations = {
       h2: 'застосунку.',
       p: 'Перегляньте шаблон застосунку, який ми адаптуємо для вашого бізнесу.',
       openBtn: 'Відкрити у повному розмірі',
+    },
+    demo: {
+      h1: 'Спробуйте',
+      h2: 'бронювання наживо.',
+      p: 'Демо-барбершоп, що працює на Valton. Оберіть послугу, спеціаліста та час — саме так це побачать ваші клієнти.',
+      openBtn: 'Спробувати демо',
+      note: 'Демо відкриється на valton.cloud',
+      template: 'Це шаблон процесу бронювання. Хочете побачити також адміністрацію та інші функції?',
+      contactLink: 'Зв\'яжіться з нами',
     },
     value: {
       h1: 'Одна система.',

@@ -54,7 +54,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <NavLink to="/" className="text-xl font-bold tracking-tight hover:opacity-80 transition-opacity">
-          <span className="text-gold">Val</span>ton
+          <span className="text-grad-gold">Val</span>ton
         </NavLink>
 
         {/* Desktop */}
@@ -74,7 +74,7 @@ export default function Navbar() {
           <LangSwitch />
           <NavLink
             to="/cenik"
-            className="bg-gold text-dark font-semibold text-sm px-5 py-2 rounded-full hover:bg-gold-light transition-colors duration-200"
+            className="btn-gold font-semibold text-sm px-5 py-2 rounded-full"
           >
             {t('nav', 'cta')}
           </NavLink>
@@ -111,7 +111,7 @@ export default function Navbar() {
             <LangSwitch />
             <NavLink
               to="/cenik"
-              className="bg-gold text-dark font-semibold text-center px-5 py-2.5 rounded-full"
+              className="btn-gold font-semibold text-center px-5 py-2.5 rounded-full"
             >
               {t('nav', 'cta')}
             </NavLink>

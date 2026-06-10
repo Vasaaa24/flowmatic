@@ -44,7 +44,7 @@ export default function Websites() {
           {features.map((feature, i) => (
             <TiltCard
               key={i}
-              className={`fx-reveal fx-d-${i + 2} fx-glow-hover group bg-dark-card border border-white/5 rounded-2xl p-4 sm:p-6 hover:border-gold/20`}
+              className={`fx-reveal fx-d-${i + 2} card group rounded-2xl p-4 sm:p-6`}
             >
               <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gold/10 text-gold mb-4 group-hover:bg-gold/20 transition-colors">
                 {feature.icon}
@@ -63,7 +63,7 @@ export default function Websites() {
           <p className="text-white/50 text-sm mb-6 max-w-xl mx-auto">{t('websites', 'priceNote')}</p>
           <Link
             to="/cenik"
-            className="inline-flex items-center gap-2 bg-gold text-dark font-bold px-6 sm:px-8 py-3 sm:py-3.5 rounded-full hover:bg-gold-light transition-colors shadow-lg shadow-gold/20"
+            className="btn-gold inline-flex items-center gap-2 font-bold px-6 sm:px-8 py-3 sm:py-3.5 rounded-full"
           >
             {t('websites', 'cta')}
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

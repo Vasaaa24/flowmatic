@@ -42,7 +42,7 @@ export default function CookieBanner() {
           </button>
           <button
             onClick={() => setVisible(false)}
-            className="text-sm bg-gold text-dark font-semibold px-5 py-2 rounded-full hover:bg-gold-light transition-colors"
+            className="btn-gold text-sm font-semibold px-5 py-2 rounded-full"
           >
             {t.accept}
           </button>

@@ -141,7 +141,7 @@ export default function Reviews() {
         <div className="text-center mb-12">
           <h2 className="fx-reveal text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
             {lang === 'uk' ? 'Що кажуть' : 'Co říkají'}{' '}
-            <span className="text-gold">{lang === 'uk' ? 'клієнти.' : 'klienti.'}</span>
+            <span className="text-grad-gold">{lang === 'uk' ? 'клієнти.' : 'klienti.'}</span>
           </h2>
         </div>
 
@@ -152,7 +152,7 @@ export default function Reviews() {
           </button>
 
           <div
-            className="flex-1 bg-dark-card border border-white/5 rounded-2xl p-6 overflow-hidden"
+            className="card flex-1 rounded-2xl p-6 overflow-hidden"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
             onTouchStart={handleTouchStart}
