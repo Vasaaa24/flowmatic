@@ -14,7 +14,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: 'Valton <noreply@valton.cz>',
       to: 'valton.reserv@gmail.com',
       replyTo: email,
@@ -52,6 +52,11 @@ export default async function handler(req, res) {
         </div>
       `,
     })
+
+    if (error) {
+      console.error('Resend error:', error)
+      return res.status(500).json({ error: error.message || 'Nepodařilo se odeslat zprávu' })
+    }
 
     return res.status(200).json({ success: true })
   } catch (error) {
