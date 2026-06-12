@@ -544,3 +544,47 @@ h1, h2, h3 {
   min-height: 100svh;
   display: block;
 }
+
+/* ─── Mobile: calm scroll ───
+   No staggered popping while scrolling — elements appear together in one
+   quick fade instead of ticking in one by one. */
+@media (max-width: 767px) {
+  /* Reveal: single fast fade, no vertical jump */
+  .fx-reveal:not(.is-visible) {
+    opacity: 0;
+    transform: none;
+  }
+  .fx-reveal.is-visible {
+    animation: fxRevealMobile 400ms ease-out backwards;
+  }
+
+  /* Kill all stagger delays — they cause the tick-tick-tick effect */
+  .fx-d-1, .fx-reveal.is-visible.fx-d-1,
+  .fx-d-2, .fx-reveal.is-visible.fx-d-2,
+  .fx-d-3, .fx-reveal.is-visible.fx-d-3,
+  .fx-d-4, .fx-reveal.is-visible.fx-d-4,
+  .fx-d-5, .fx-reveal.is-visible.fx-d-5,
+  .fx-d-6, .fx-reveal.is-visible.fx-d-6 {
+    transition-delay: 0ms;
+    animation-delay: 0ms;
+  }
+
+  /* Headings: no letter-by-letter ticking — show text at once */
+  .split-char {
+    opacity: 1;
+    transform: none;
+  }
+  .split-visible .split-char {
+    animation: none;
+  }
+
+  /* Border tracing: instant on mobile */
+  .fx-trace-border::before {
+    clip-path: inset(0 0 0 0);
+    transition: none;
+  }
+}
+@keyframes fxRevealMobile {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
